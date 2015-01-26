@@ -1,4 +1,7 @@
+{include file="@vendor/tez/yii2theme-adminui/themes/layouts/main.tpl"}
 {use class="yii\helpers\Html"}
+{set layout=false}
+{block name=body}
 <div class="box">
     <div class="box-header">
         <h1 class="box-title">{block name=box_title}{/block}</h1>
@@ -8,3 +11,4 @@
         {block name=content}{/block}
     </div>
 </div>
+{/block}

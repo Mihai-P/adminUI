@@ -32,7 +32,13 @@ class AdminUiBootstrap implements BootstrapInterface{
                     'widgets' => [
                         'functions' => [
                             'GridView' => 'yii\grid\GridView',
+                            //'Nav' => 'yii\bootstrap\Nav',
+                            //'Alert' => 'yii\bootstrap\Alert',
                         ],
+                        'blocks' => [
+                            //'NavBar' => 'yii\bootstrap\NavBar',
+                            'ActiveForm' => 'yii\widgets\ActiveForm',
+                        ]
                     ]
                 ],
             ],
