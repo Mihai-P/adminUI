@@ -1,4 +1,4 @@
-{include file="@vendor/tez/yii2theme-adminui/themes/layouts/main.tpl"}
+{extends file="@vendor/tez/yii2theme-adminui/themes/layouts/main.tpl"}
 {use class="yii\helpers\Html"}
 {set layout=false}
 {block name=body}
