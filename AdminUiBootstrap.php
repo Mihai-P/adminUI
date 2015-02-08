@@ -18,11 +18,14 @@ class AdminUiBootstrap implements BootstrapInterface{
                 //'yii\grid\ActionColumn'=>'@yii/adminUi/widget/ActionColumn.php',
                 'theme\widgets\Pjax'=>'@vendor/yiisoft/yii2/widgets/Pjax.php',
             ]);
-
+        \Yii::setAlias('theme', __DIR__);
         $app->set('view', [
             'class'=>'yii\web\View',
             'theme' => [
-                'pathMap' => ['@backend/views' => '@backend/themes/adminui'],   // for Admin theme which resides on extension/adminui
+                'pathMap' => [
+                    '@backend/views' => '@backend/themes/adminui',
+                    '@dektrium/user/views/settings' => ['@cms/views/settings', '@dektrium/user/views/settings'],
+                ],
                 //'baseUrl' => '@web/themes/adminui',
             ],
             'renderers' => [
@@ -97,21 +100,23 @@ class AdminUiBootstrap implements BootstrapInterface{
             );
 
         }
+        /*
         Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
-            if(in_array($event->action->id,['login','forgot','reset-password']) && in_array('backend',  explode("\\", $event->sender->className()))){
+            if(!Yii::$app->params['useSmarty'] && in_array($event->action->id,['login','forgot','reset-password']) && in_array('backend',  explode("\\", $event->sender->className()))){
                 $event->sender->layout = '//blank';
             }
         });
         Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
-            if(!Yii::$app->params['useSmarty'] && in_array($event->action->id, ['index']) && in_array('backend',  explode("\\", $event->sender->className()))){
+            if(!Yii::$app->params['useSmarty'] && in_array($event->action->id, ['index']) && in_array(['backend', 'cms'],  explode("\\", $event->sender->className()))){
                 $event->sender->layout = '//index';
             }
         });
         Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
-            if(in_array($event->action->id, ['create', 'update']) && in_array('backend',  explode("\\", $event->sender->className()))){
+            if(!Yii::$app->params['useSmarty'] && in_array($event->action->id, ['create', 'update']) && in_array('backend',  explode("\\", $event->sender->className()))){
                 $event->sender->layout = '//form';
             }
         });
+        */
 
     }
 }

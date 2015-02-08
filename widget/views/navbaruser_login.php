@@ -8,15 +8,15 @@ if($type=='topbar'){
 ?>
 <a href="#" class="dropdown-toggle navbar-username" data-toggle="dropdown">
 	<i class="glyphicon glyphicon-user"></i>
-	<span><?php echo Yii::$app->user->identity->username;?> <i class="caret"></i></span>
+	<span><?php echo Yii::$app->user->identity->profile->firstname;?> <i class="caret"></i></span>
 </a>
 <ul class="dropdown-menu">
 	<!-- User image -->
 	<li class="user-header bg-light-blue">
-		<img src="<?php echo $bundle->baseUrl?>/img/avatar3.png" class="img-circle" alt="User Image" />
+		<img src="http://gravatar.com/avatar/<?= Yii::$app->user->identity->profile->gravatar_id ?>?s=64" class="img-circle" alt="<?= Yii::$app->user->identity->profile->name ?>" />
 		<p>
-			<?=Yii::$app->user->identity->username?>
-                        <small><?php /* TODO echo (Yii::$app->user->identity->createdOn) ? 'Member since '.date('M. Y',  strtotime(Yii::$app->user->identity->createdOn)) : '';*/ ?></small>
+			<?= Yii::$app->user->identity->profile->name?>
+            <small><?= (Yii::$app->user->identity->created_at) ? 'Member since '.date('M. Y',  Yii::$app->user->identity->created_at) : ''; ?></small>
 		</p>
 	</li>
         <?php /*/?>
@@ -35,7 +35,7 @@ if($type=='topbar'){
 	<!-- Menu Footer-->
 	<li class="user-footer">
 		<div class="pull-left">
-                    <?=  Html::a('Profile', ['/profile/default/index'], ['class'=>'btn btn-default btn-flat'])?>
+                    <?=  Html::a('Profile', ['/user/settings/profile'], ['class'=>'btn btn-default btn-flat'])?>
 		</div>
 		<div class="pull-right">
                     <a href="<?php echo Url::toRoute('/site/logout');?>" data-method="post" class="btn btn-default btn-flat">Sign out</a>
@@ -45,10 +45,10 @@ if($type=='topbar'){
 <?php }else{?>
 <div class="user-panel">
     <div class="pull-left image">
-        <img src="<?php echo $bundle->baseUrl?>/img/avatar3.png" class="img-circle" alt="User Image" />
+        <img src="http://gravatar.com/avatar/<?= Yii::$app->user->identity->profile->gravatar_id ?>?s=64" class="img-circle" alt="<?= Yii::$app->user->identity->profile->name ?>" />
     </div>
     <div class="pull-left info">
-        <p>Hello, <?=  Html::a(Yii::$app->user->identity->username, ['/profile/default/index'])?></p>
+        <p>Hello, <?=  Html::a(Yii::$app->user->identity->profile->firstname, ['/user/settings/profile'])?></p>
 
         <i class="fa fa-circle text-success"></i> Online
     </div>

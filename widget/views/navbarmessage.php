@@ -16,7 +16,7 @@ $bundle = AdminUiAsset::register($this);
 			<li><!-- start message -->
 				<a href="#">
 					<div class="pull-left">
-						<img src="<?php echo $bundle->baseUrl?>/img/avatar3.png" class="img-circle" alt="User Image"/>
+						<img src="http://gravatar.com/avatar/<?= Yii::$app->user->identity->profile->gravatar_id ?>?s=64" class="img-circle" alt="<?= Yii::$app->user->identity->profile->name ?>"/>
 					</div>
 					<h4>
 						Support Team

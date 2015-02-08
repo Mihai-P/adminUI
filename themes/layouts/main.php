@@ -74,14 +74,14 @@ $this->beginPage()
                     $menuitems = [
                         [
                             'label' => 'Dashboard', 
-                            'url' => ['/adminuidemo'],
+                            'url' => ['/'],
                             'linkOptions'=>[
                                 'class' => 'fa fa-dashboard',
                             ]
                         ],
                         [
-                            'label' => 'Widgets', 
-                            'url' => ['/adminuidemo/default/widget'],
+                            'label' => 'Tags',
+                            'url' => ['/cms/tag'],
                             'linkOptions'=>[
                                 'class' => 'fa fa-th',                                
                             ],
@@ -91,29 +91,22 @@ $this->beginPage()
                             ],
                         ],
                         [
-                            'label' => 'Charts', 
+                            'label' => 'Blog',
                             #'url' => ['/site/chart'],
                             'linkOptions'=>[
                                 'class' => 'fa fa-bar-chart-o',
                             ],
                             'items' => [
                                 [
-                                    'label' => 'Morris', 
-                                    'url' => ['/adminuidemo/chart/morris'],
+                                    'label' => 'Posts',
+                                    'url' => ['/blog/blog-post'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Flot', 
-                                    'url' => ['/adminuidemo/chart/flot'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Inline charts', 
-                                    'url' => ['/adminuidemo/chart/inline'],
+                                    'label' => 'Comments',
+                                    'url' => ['/blog/blog-comments'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
