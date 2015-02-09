@@ -49,6 +49,10 @@ class NavBar extends Widget
      */
     public $options = [];
     /**
+     * @var array with the links in the breadcrumbs
+     */
+    public $breadCrumbs = [];
+    /**
      * @var array the HTML attributes for the container tag. The following special options are recognized:
      *
      * - tag: string, defaults to "div", the name of the container tag.
@@ -89,7 +93,8 @@ class NavBar extends Widget
         $options = $this->options;
         $tag = ArrayHelper::remove($options, 'tag', 'nav');
         echo Html::beginTag($tag, $options);
-        echo $this->renderToggleButton();        
+        echo $this->renderToggleButton();
+        echo $this->renderBreadCrumbs();
         echo Html::beginTag('div', ['class' => 'navbar-right']);
     }
 
@@ -102,6 +107,19 @@ class NavBar extends Widget
         $tag = ArrayHelper::remove($this->options, 'tag', 'nav');
         echo Html::endTag($tag);
         AdminUiAsset::register($this->getView());
+    }
+
+    /**
+     * Renders collapsible toggle button.
+     * @return string the rendering toggle button.
+     */
+    protected function renderBreadCrumbs()
+    {
+        return Breadcrumbs::widget([
+            'tag'   => 'ol',
+            'options'=>['class'=>'breadcrumb'],
+            'links' => isset($this->breadCrumbs) ? $this->breadCrumbs : [],
+        ]);
     }
 
     /**

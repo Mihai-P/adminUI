@@ -42,6 +42,7 @@ $this->beginPage()
                 'options' => [                   
                     'class' => 'navbar-static-top',
                 ],
+                'breadCrumbs' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]);
 
             $menuItems = [];
@@ -114,43 +115,29 @@ $this->beginPage()
                             ],
                         ],
                         [
-                            'label' => 'UI Elements', 
+                            'label' => 'Users',
                             #'url' => ['/site/chart'],
                             'linkOptions'=>[
                                 'class' => 'fa fa-laptop',
                             ],
                             'items' => [
                                 [
-                                    'label' => 'General', 
-                                    'url' => ['/adminuidemo/ui/general'],
+                                    'label' => 'Administrators',
+                                    'url' => ['/user/admin/index'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Icons', 
-                                    'url' => ['/adminuidemo/ui/icons'],
+                                    'label' => 'Permissions',
+                                    'url' => ['/rbac/permission/index'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Buttons', 
-                                    'url' => ['/adminuidemo/ui/buttons'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Sliders', 
-                                    'url' => ['/adminuidemo/ui/sliders'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Timeline', 
-                                    'url' => ['/adminuidemo/ui/timeline'],
+                                    'label' => 'Role',
+                                    'url' => ['/rbac/role/index'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]

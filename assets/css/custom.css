@@ -41,3 +41,24 @@ td.action-column a[title="Delete"] {
     border-color: #D36A5F;
     color: #fff;
 }
+
+nav .breadcrumb {
+    width: 500px;
+    float: left;
+    background-color: transparent;
+    padding: 15px 15px;
+    margin-bottom: 0;
+}
+
+nav .breadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+nav .breadcrumb a i.fa.fa-dashboard {
+    margin-right: 5px;
+}
+
+nav .breadcrumb .active {
+    color: rgba(255, 255, 255, 1);
+}
