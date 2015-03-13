@@ -31,7 +31,8 @@
     "bower-asset/bootstrap-daterangepicker":"1.3.13",
     "bower-asset/tinymce":"4.*",
     "bower-asset/dropzone":"3.*",
-    "bower-asset/jquery-ui":"1.11.2"
+    "bower-asset/jquery-ui":"1.11.2",
+    "almasaeed2010/adminlte":"2.*"
   },
   "autoload": {
     "psr-4": {
