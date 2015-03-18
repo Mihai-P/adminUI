@@ -17,16 +17,16 @@ use yii\web\AssetBundle;
  */
 class AdminUiAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/dist/';
     public $baseUrl = '@web';
     public $css = [
-        'css/AdminLTE.css',
-        'css/custom.css',
+        'css/AdminLTE.min.css',
+        'css/skins/_all-skins.min.css',
     ];
     
     public $js  = [            
             //'js/jquery-ui-1.10.3.min.js',
-            'js/AdminLTE/app.js'
+            'js/app.js'
     ];      
         
     public $depends = [

@@ -35,7 +35,7 @@ $this->beginPage()
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
                     'tag'   => 'header',
-                    'class' => 'header',
+                    'class' => 'main-header',
                 ],
         ]);
         NavBar::begin([                
@@ -49,9 +49,9 @@ $this->beginPage()
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'']];
             }else{
-                //$menuItems[] = ['content'=> NavBarMessage::Widget(),'options'=>['class'=>'dropdown messages-menu']];
-                //$menuItems[] = ['content'=> NavBarNotification::Widget(),'options'=>['class'=>'dropdown notifications-menu']];
-                //$menuItems[] = ['content'=> NavBarTask::Widget(),'options'=>['class'=>'dropdown tasks-menu']];
+                $menuItems[] = ['content'=> NavBarMessage::Widget(),'options'=>['class'=>'dropdown messages-menu']];
+                $menuItems[] = ['content'=> NavBarNotification::Widget(),'options'=>['class'=>'dropdown notifications-menu']];
+                $menuItems[] = ['content'=> NavBarTask::Widget(),'options'=>['class'=>'dropdown tasks-menu']];
                 $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'dropdown user user-menu']];
             }
             
@@ -68,14 +68,29 @@ $this->beginPage()
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
-                    <?php 
-                    echo NavBarUser::Widget(['type' =>'sidebar']);
-                    
-                    
+                    <?= NavBarUser::Widget(['type' =>'sidebar']);?>
+                    <form action="#" method="get" class="sidebar-form">
+                        <div class="input-group">
+                            <input type="text" id="keywords" class="form-control" placeholder="Search...">
+                            <span class="input-group-btn">
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+<?php 
                     $menuitems = [
+                        [
+                            'content' => 'MAIN NAVIGATION', 
+                            'options' => [
+                                'class' => 'header',
+                            ],
+                        ],
                         [
                             'label' => 'Dashboard', 
                             'url' => ['/'],
+                            'options' => [
+                                'class' => 'treeview',
+                            ],
                             'linkOptions'=>[
                                 'class' => 'fa fa-dashboard',
                             ]
@@ -102,14 +117,14 @@ $this->beginPage()
                                     'label' => 'Posts',
                                     'url' => ['/blog/blog-post'],
                                     'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
+                                        'class' => 'fa fa-circle-o',
                                     ]
                                 ],
                                 [
                                     'label' => 'Comments',
                                     'url' => ['/blog/blog-comments'],
                                     'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
+                                        'class' => 'fa fa-circle-o',
                                     ]
                                 ],
                             ],
@@ -292,28 +307,6 @@ $this->beginPage()
 
             <!-- Right side column. Contains the navbar and content of the page -->
             <aside class="right-side">                
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        <?php echo $this->title;?>
-                        <small>
-                            Control panel
-                            <?php /*TODO
-                            if($this->params['pagelabel']){
-                                echo $this->params['pagelabel'];
-                            }else{ ?>
-                            Control panel
-                            <?php } */ ?>
-                        </small>
-                    </h1>
-                    <?php
-                    echo Breadcrumbs::widget([
-                        'tag'   => 'ol',
-                        'options'=>['class'=>'breadcrumb'],
-                        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                    ]) ?>
-                </section>
-
                 <!-- Main content -->
                 <section class="content">
                     <?= $content ?>

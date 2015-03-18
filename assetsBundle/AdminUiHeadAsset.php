@@ -18,7 +18,7 @@ use yii\web\View as View;
  */
 class AdminUiHeadAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/dist/';
 	
     public $js  = [
             '//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js',
@@ -29,4 +29,8 @@ class AdminUiHeadAsset extends AssetBundle
             'condition'=> 'lt IE 9',
             'position'=> View::POS_HEAD,
     ];
+    
+    public $depends = [
+            'yii\adminUi\assetsBundle\AdminUiExtraAsset',
+    ];    
 }

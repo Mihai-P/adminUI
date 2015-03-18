@@ -1,0 +1,10 @@
+nav .breadcrumb {
+    display: inline; 
+    background-color: transparent; 
+    float: left; 
+    margin-bottom: 0;
+    margin-top: 6px;
+}
+nav .breadcrumb li a {color: white;}
+nav .breadcrumb li.active {color: #b8c7ce;}
+nav .breadcrumb li a i.fa {padding-right: 6px;}

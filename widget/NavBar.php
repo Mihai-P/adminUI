@@ -95,7 +95,7 @@ class NavBar extends Widget
         echo Html::beginTag($tag, $options);
         echo $this->renderToggleButton();
         echo $this->renderBreadCrumbs();
-        echo Html::beginTag('div', ['class' => 'navbar-right']);
+        echo Html::beginTag('div', ['class' => 'navbar-custom-menu']);
     }
 
     /**
@@ -117,7 +117,7 @@ class NavBar extends Widget
     {
         return Breadcrumbs::widget([
             'tag'   => 'ol',
-            'options'=>['class'=>'breadcrumb'],
+            'options'=>['class'=>'breadcrumb hidden-sm hidden-xs'],
             'links' => isset($this->breadCrumbs) ? $this->breadCrumbs : [],
         ]);
     }
@@ -134,7 +134,7 @@ class NavBar extends Widget
         $screenReader .= "<span class=\"icon-bar\"></span>";
 
         return Html::tag('a',"{$screenReader}", [
-            'class' => 'navbar-btn sidebar-toggle',
+            'class' => 'sidebar-toggle',
             'data-toggle'=> 'offcanvas', 
             'role'=>'button']
         );
