@@ -12,8 +12,8 @@ if(count($flashes)) {
 }
 ?>
     <div class="box">
-        <div class="box-header">
-            <h6 class="box-title"><?= Html::encode($this->title) ?></h6>
+        <div class="box-header with-border">
+            <h1 class="box-title"><?= Html::encode($this->title) ?></h1>
         </div>
         <div class="box-body table-responsive">
             <?= $content ?>

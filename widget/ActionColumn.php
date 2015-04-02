@@ -11,7 +11,6 @@ use Yii;
 use Closure;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use common\component\AppActiveRecord;
 
 /**
  * ActionColumn is a column for the [[GridView]] widget that displays buttons for viewing and manipulating the items.
@@ -22,7 +21,7 @@ use common\component\AppActiveRecord;
  * 'columns' => [
  *     // ...
  *     [
- *         'class' => 'yii\grid\ActionColumn',
+ *         'class' => ActionColumn::className(),
  *         // you may configure additional properties here
  *     ],
  * ]
@@ -46,6 +45,13 @@ class ActionColumn extends Column
      * in the context of action column). They will be replaced by the corresponding button rendering callbacks
      * specified in [[buttons]]. For example, the token `{view}` will be replaced by the result of
      * the callback `buttons['view']`. If a callback cannot be found, the token will be replaced with an empty string.
+     *
+     * As an example, to only have the view, and update button you can add the ActionColumn to your GridView columns as follows:
+     *
+     * ```
+     * ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {update}'],
+     * ```
+     *
      * @see buttons
      */
     public $template = '{view} {update} {delete}';
@@ -55,21 +61,21 @@ class ActionColumn extends Column
      * signature:
      *
      * ```php
-     * function ($url, $model) {
+     * function ($url, $model, $key) {
      *     // return the button HTML code
      * }
      * ```
      *
-     * where `$url` is the URL that the column creates for the button, and `$model` is the model object
-     * being rendered for the current row.
+     * where `$url` is the URL that the column creates for the button, `$model` is the model object
+     * being rendered for the current row, and `$key` is the key of the model in the data provider array.
      *
      * You can add further conditions to the button, for example only display it, when the model is
      * editable (here assuming you have a status field that indicates that):
      *
      * ```php
      * [
-     *     'update' => function ($url, $model) {
-     *         return $model->status == 'editable' ? Html::a('Update', $url) : '';
+     *     'update' => function ($url, $model, $key) {
+     *         return $model->status === 'editable' ? Html::a('Update', $url) : '';
      *     };
      * ],
      * ```
@@ -81,13 +87,11 @@ class ActionColumn extends Column
      * If this property is not set, button URLs will be created using [[createUrl()]].
      */
     public $urlCreator;
-    
-    
     /**
-     * @var callback a callback that check access of that button creation.     * 
-     * 
+     * @var array html options to be applied to the [[initDefaultButtons()|default buttons]].
+     * @since 2.0.4
      */
-    public $checkaccess;
+    public $buttonOptions = [];
 
 
     /**
@@ -96,122 +100,47 @@ class ActionColumn extends Column
     public function init()
     {
         parent::init();
-        $this->contentOptions = array_merge($this->contentOptions,['width'=>90]);
         $this->initDefaultButtons();
-        
-        if(!$this->checkaccess){
-            $this->checkaccess = function($url){
-                return true;
-            };
-        }
     }
 
     /**
-     * Initializes the default button rendering callbacks
+     * Initializes the default button rendering callbacks.
      */
     protected function initDefaultButtons()
     {
         if (!isset($this->buttons['view'])) {
-            $this->buttons['view'] = function ($url, $model) {
-                return Html::tag('li',Html::a('<span class="fa fa-eye fa-lg"></span> '.Yii::t('yii', 'View'), $url, [
+            $this->buttons['view'] = function ($url, $model, $key) {
+                $options = array_merge([
                     'title' => Yii::t('yii', 'View'),
+                    'aria-label' => Yii::t('yii', 'View'),
+                    'class' => 'view btn-warning',
                     'data-pjax' => '0',
-                ]));
+                ], $this->buttonOptions);
+                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
             };
         }
         if (!isset($this->buttons['update'])) {
-            $this->buttons['update'] = function ($url, $model) {
-                return Html::tag('li',Html::a('<span class="fa fa-edit fa-lg"></span> '.Yii::t('yii', 'Edit'), $url, [
-                    'title' => Yii::t('yii', 'Edit'),
+            $this->buttons['update'] = function ($url, $model, $key) {
+                $options = array_merge([
+                    'title' => Yii::t('yii', 'Update'),
+                    'aria-label' => Yii::t('yii', 'Update'),
+                    'class' => 'update btn-primary',
                     'data-pjax' => '0',
-                ]));
+                ], $this->buttonOptions);
+                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
             };
         }
         if (!isset($this->buttons['delete'])) {
-            $this->buttons['delete'] = function ($url, $model) {
-                return Html::tag('li',Html::a('<span class="fa fa-trash-o fa-lg"></span> '.Yii::t('yii', 'Delete'), $url, [
+            $this->buttons['delete'] = function ($url, $model, $key) {
+                $options = array_merge([
                     'title' => Yii::t('yii', 'Delete'),
+                    'aria-label' => Yii::t('yii', 'Delete'),
+                    'class' => 'delete alert-danger',
                     'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                     'data-method' => 'post',
                     'data-pjax' => '0',
-                ]));
-            };
-        }
-        
-        if (!isset($this->buttons['restore'])) {
-            $this->buttons['restore'] = function ($url, $model) {
-                return Html::tag('li',Html::a('<span class="fa fa-undo fa-lg"></span> '.Yii::t('yii', 'Restore'), $url, [
-                    'title' => Yii::t('yii', 'Restore'),
-                    'data-pjax' => '0',
-                ]));
-            };
-        }
-        
-        if (!isset($this->buttons['setpassword'])) {
-            $this->buttons['setpassword'] = function ($url, $model) {
-                return Html::tag('li',Html::a('<span class="fa fa-shield fa-lg"></span> '.Yii::t('yii', 'Set Password'), $url, [
-                    'title' => Yii::t('yii', 'Set Password'),
-                    'data-pjax' => '0',
-                ]));
-            };
-        }
-        
-        if (!isset($this->buttons['changepass'])) {
-            $this->buttons['changepass'] = function ($url, $model) {
-                return Html::tag('li',Html::a('<span class="fa fa-shield fa-lg"></span> '.Yii::t('yii', 'Change Password'), $url, [
-                    'title' => Yii::t('yii', 'Change Password'),
-                    'data-pjax' => '0',
-                ]));
-            };
-        }
-        
-        if (!isset($this->buttons['publish'])) {
-            $this->buttons['publish'] = function ($url, $model) {
-                if($model->state != AppActiveRecord::STATUS_PUBLISH){
-                    return Html::tag('li',Html::a('<span class="fa fa-check-square-o fa-lg"></span> '.Yii::t('yii', 'Publish'), $url, [
-                        'title' => Yii::t('yii', 'Publish'),
-                        'data-pjax' => '0',
-                        'data-method' => 'post',
-                    ]));
-                }else{
-                    return '';
-                }                
-            };
-        }
-        
-        if (!isset($this->buttons['unpublish'])) {
-            $this->buttons['unpublish'] = function ($url, $model) {
-                if($model->state != AppActiveRecord::STATUS_UNPUBLISH){
-                    return Html::tag('li',Html::a('<span class="fa fa-minus-square-o fa-lg"></span> '.Yii::t('yii', 'Unpublish'), $url, [
-                        'title' => Yii::t('yii', 'Unpublish'),
-                        'data-pjax' => '0',
-                        'data-method' => 'post',
-                    ]));
-                }else{
-                    return '';
-                }
-            };
-        }
-        
-        if (!isset($this->buttons['sendtopublish'])) {
-            $this->buttons['sendtopublish'] = function ($url, $model) {
-                if($model->state != AppActiveRecord::STATUS_PUBLISHREADY){
-                    return Html::tag('li',Html::a('<span class="fa fa-plus-square-o fa-lg"></span> '.Yii::t('yii', 'Ready to be Publish'), $url, [
-                        'title' => Yii::t('yii', 'Ready to be Publish'),
-                        'data-pjax' => '0',
-                        'data-method' => 'post',
-                    ]));
-                }else{
-                    return '';
-                }
-            };
-        }
-        if (!isset($this->buttons['deallocate'])) {
-            $this->buttons['deallocate'] = function ($url, $model) {
-                return Html::tag('li',Html::a('<span class="fa fa-edit fa-lg"></span> '.Yii::t('yii', 'Deallocate'), $url, [
-                    'title' => Yii::t('yii', 'Deallocate'),
-                    'data-pjax' => '0',
-                ]));
+                ], $this->buttonOptions);
+                return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
             };
         }
     }
@@ -242,43 +171,15 @@ class ActionColumn extends Column
      */
     protected function renderDataCellContent($model, $key, $index)
     {
-        $content = Html::tag('button','Actions <span class="caret"></span>',[            
-                    'type'  => 'button',
-                    'class' => 'btn btn-default dropdown-toggle',
-                    'data-toggle' => 'dropdown',
-                ]);
-        
-        
-        
-        $buttons = preg_replace_callback('/\\{([\w\-\/]+)\\}/', function ($matches) use ($model, $key, $index) {
+        return preg_replace_callback('/\\{([\w\-\/]+)\\}/', function ($matches) use ($model, $key, $index) {
             $name = $matches[1];
-            $module = \Yii::$app->user->can(\Yii::$app->controller->module->id.'/'.\Yii::$app->controller->id.'/'.$name);
-            if($module){
-                if (isset($this->buttons[$name])) {
-                    $url = $this->createUrl($name, $model, $key, $index);
-                    if(call_user_func($this->checkaccess, $url)){
-                        return call_user_func($this->buttons[$name], $url, $model);
-                    }
-                    else{
-                        return '';
-                    }
-               } 
-            else {
-                    return '';
-                }
+            if (isset($this->buttons[$name])) {
+                $url = $this->createUrl($name, $model, $key, $index);
+
+                return call_user_func($this->buttons[$name], $url, $model, $key);
+            } else {
+                return '';
             }
         }, $this->template);
-        
-        if($buttons =='' || $buttons ==' '){
-            return $buttons;
-        }
-        $content .= Html::tag('ul',$buttons,[             
-                    'class' => 'dropdown-menu pull-right',
-                    'role' => 'menu',
-                ]);
-        
-        return Html::tag('div',$content, [
-                    'class' => 'dropdown'
-                ]);
     }
 }

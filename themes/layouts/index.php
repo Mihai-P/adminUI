@@ -13,9 +13,9 @@ use yii\helpers\Url;
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right">
-                    <li><a href="/contact/pdf" target="_blank">Download PDF</a></li>
-                    <li><a href="/contact/csv" target="_blank">Download CSV</a></li>
-                    <li><a href="#assign-all-tag" data-toggle="modal" data-pjax="0" role="button">Assign to tag</a></li>
+                    <li><a href="/contact/pdf" target="_blank"><i class="fa fa-file-pdf-o"></i>Download PDF</a></li>
+                    <li><a href="/contact/csv" target="_blank"><i class="fa fa-file-excel-o"></i>Download CSV</a></li>
+                    <li><a href="#assign-all-tag" data-toggle="modal" data-pjax="0" role="button"><i class="fa fa-tags"></i>Assign to tag</a></li>
                 </ul>
             </div>            
             <div class="col-sm-2 pull-right hidden-sm hidden-xs">

@@ -15,7 +15,7 @@ class AdminUiBootstrap implements BootstrapInterface{
     public function bootstrap($app){
         \Yii::$classMap = array_merge(\Yii::$classMap,[
                 //'yii\grid\CheckboxColumn'=>'@yii/adminUi/widget/CheckboxColumn.php',
-                //'yii\grid\ActionColumn'=>'@yii/adminUi/widget/ActionColumn.php',
+                'yii\grid\ActionColumn'=>'@yii/adminUi/widget/ActionColumn.php',
                 'theme\widgets\Pjax'=>'@vendor/yiisoft/yii2/widgets/Pjax.php',
             ]);
         \Yii::setAlias('theme', __DIR__);
