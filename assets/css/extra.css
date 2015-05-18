@@ -8,3 +8,7 @@ nav .breadcrumb {
 nav .breadcrumb li a {color: white;}
 nav .breadcrumb li.active {color: #b8c7ce;}
 nav .breadcrumb li a i.fa {padding-right: 6px;}
+
+div.box form.form-horizontal {
+    width: 99%;
+}

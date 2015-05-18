@@ -31,6 +31,7 @@ class AdminUiBootstrap implements BootstrapInterface
                 'pathMap' => [
                     '@backend/views' => '@backend/themes/adminui',
                     '@dektrium/user/views/settings' => ['@cms/views/settings', '@dektrium/user/views/settings'],
+                    '@dektrium/user/views/admin' => ['@cms/views/admin', '@dektrium/user/views/admin'],
                 ],
             //'baseUrl' => '@web/themes/adminui',
             ],
@@ -97,6 +98,15 @@ class AdminUiBootstrap implements BootstrapInterface
             Yii::$container->set('yii\grid\CheckboxColumn', [
                 'options' => ['style' => 'width: 40px;']
                     ]
+            );
+            Yii::$container->set('yii\bootstrap\ActiveForm', [
+                'layout' => 'horizontal',
+                    'fieldConfig' => [
+                        'horizontalCssClasses' => [
+                            'wrapper' => 'col-sm-9',
+                        ],        
+                    ],
+                ]
             );
         }
         /*
