@@ -18,7 +18,7 @@ use yii\web\AssetBundle;
 
 class AdminUiPluginSliderAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $js = [
         'js/plugins/bootstrap-slider/bootstrap-slider.js',
     ];

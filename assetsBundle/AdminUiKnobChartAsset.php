@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiKnobChartAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';  
+    public $sourcePath = '@theme/assets/';  
     
     public $js  = [
             'js/plugins/jqueryKnob/jquery.knob.js',

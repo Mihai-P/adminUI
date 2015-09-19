@@ -17,18 +17,19 @@ use yii\web\AssetBundle;
  */
 class AdminUiAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/dist/';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/';
     public $baseUrl = '@web';
     public $css = [
-        'css/AdminLTE.min.css',
-        'css/skins/_all-skins.min.css',
+        'dist/css/AdminLTE.min.css',
+        'dist/css/skins/_all-skins.min.css',
     ];
-    
-    public $js  = [            
+
+    public $js  = [
             //'js/jquery-ui-1.10.3.min.js',
-            'js/app.js'
-    ];      
-        
+            'dist/js/app.js',
+            'plugins/iCheck/icheck.min.js'
+    ];
+
     public $depends = [
             'yii\web\JqueryAsset',
             'yii\bootstrap\BootstrapAsset',
@@ -36,5 +37,5 @@ class AdminUiAsset extends AssetBundle
             'yii\adminUi\assetsBundle\AdminUiHeadAsset',
             'yii\adminUi\assetsBundle\FontAwesomeAsset',
             'yii\adminUi\assetsBundle\FontIoniconsAsset',
-    ];        
+    ];
 }

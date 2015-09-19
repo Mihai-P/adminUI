@@ -18,7 +18,7 @@ use yii\web\AssetBundle;
 
 class AdminUiPluginIonSliderAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $js = [
         'js/plugins/ionslider/ion.rangeSlider.min.js',
     ];

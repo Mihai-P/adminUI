@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiTimePickerAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $css = [                
         'css/timepicker/bootstrap-timepicker.min.css',
     ];

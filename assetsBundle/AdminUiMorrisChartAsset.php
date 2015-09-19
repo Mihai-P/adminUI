@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiMorrisChartAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $css = [        
         'css/morris/morris.css',
     ];

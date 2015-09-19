@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiActiveForm extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $baseUrl = '@web';
     
     public $js  = [

@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiThemeAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $css = [
         'css/bootstrap-theme.css',
     ];

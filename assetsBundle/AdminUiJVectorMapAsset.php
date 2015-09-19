@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiJVectorMapAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $css = [                
         'css/jvectormap/jquery-jvectormap-1.2.2.css',
     ];

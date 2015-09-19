@@ -11,6 +11,17 @@ use yii\adminUi\widget\NavBarNotification;
 use yii\adminUi\widget\NavBarTask;
 use yii\adminUi\widget\Breadcrumbs;
 
+if (Yii::$app->user->isGuest) {
+/**
+ * Do not use this code in your template. Remove it.
+ * Instead, use the code  $this->layout = '//main-login'; in your controller.
+ */
+    echo $this->render(
+        'login',
+        ['content' => $content]
+    );
+} else {
+
 /**
  * @var \yii\web\View $this
  * @var string $content
@@ -27,7 +38,7 @@ $this->beginPage()
     <?php $this->head() ?>
 </head>
 <body class="skin-blue">
-<?php 
+<?php
     $this->beginBody();
     Header::begin([
         'brandLabel' => 'My Company',
@@ -38,8 +49,8 @@ $this->beginPage()
                     'class' => 'main-header',
                 ],
         ]);
-        NavBar::begin([                
-                'options' => [                   
+        NavBar::begin([
+                'options' => [
                     'class' => 'navbar-static-top',
                 ],
                 'breadCrumbs' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
@@ -54,17 +65,17 @@ $this->beginPage()
                 $menuItems[] = ['content'=> NavBarTask::Widget(),'options'=>['class'=>'dropdown tasks-menu']];
                 $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'dropdown user user-menu']];
             }
-            
+
             echo Nav::widget([
                 'options' => ['class' => 'nav navbar-nav'],
                 'items' => $menuItems,
-            ]);        
+            ]);
         NavBar::end();
      Header::end();
 ?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
-            <aside class="left-side sidebar-offcanvas">                
+            <aside class="left-side sidebar-offcanvas">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
@@ -77,16 +88,16 @@ $this->beginPage()
                             </span>
                         </div>
                     </form>
-<?php 
+<?php
                     $menuitems = [
                         [
-                            'content' => 'MAIN NAVIGATION', 
+                            'content' => 'MAIN NAVIGATION',
                             'options' => [
                                 'class' => 'header',
                             ],
                         ],
                         [
-                            'label' => 'Dashboard', 
+                            'label' => 'Dashboard',
                             'url' => ['/'],
                             'options' => [
                                 'class' => 'treeview',
@@ -99,7 +110,7 @@ $this->beginPage()
                             'label' => 'Tags',
                             'url' => ['/cms/tag'],
                             'linkOptions'=>[
-                                'class' => 'fa fa-th',                                
+                                'class' => 'fa fa-th',
                             ],
                             'badgeOptions' => [
                                 'type' => 'new',
@@ -160,28 +171,28 @@ $this->beginPage()
                             ],
                         ],
                         [
-                            'label' => 'Forms', 
+                            'label' => 'Forms',
                             #'url' => ['/site/chart'],
                             'linkOptions'=>[
                                 'class' => 'fa fa-edit',
                             ],
                             'items' => [
                                 [
-                                    'label' => 'General Elements', 
+                                    'label' => 'General Elements',
                                     'url' => ['/adminuidemo/forms/general'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Advanced Elements', 
+                                    'label' => 'Advanced Elements',
                                     'url' => ['/adminuidemo/forms/advanced'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Editors', 
+                                    'label' => 'Editors',
                                     'url' => ['/adminuidemo/forms/editors'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
@@ -190,21 +201,21 @@ $this->beginPage()
                             ],
                         ],
                         [
-                            'label' => 'Tables', 
+                            'label' => 'Tables',
                             #'url' => ['/site/chart'],
                             'linkOptions'=>[
                                 'class' => 'fa fa-table',
                             ],
                             'items' => [
                                 [
-                                    'label' => 'Simple tables', 
+                                    'label' => 'Simple tables',
                                     'url' => ['/adminuidemo/tables/simple'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Data tables', 
+                                    'label' => 'Data tables',
                                     'url' => ['/adminuidemo/tables/data'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
@@ -213,10 +224,10 @@ $this->beginPage()
                             ],
                         ],
                         [
-                            'label' => 'Calendar', 
+                            'label' => 'Calendar',
                             'url' => ['/adminuidemo/default/calendar'],
                             'linkOptions'=>[
-                                'class' => 'fa fa-calendar',                                
+                                'class' => 'fa fa-calendar',
                             ],
                             'badgeOptions' => [
                                 'type' => 'notification1',
@@ -224,10 +235,10 @@ $this->beginPage()
                             ],
                         ],
                         [
-                            'label' => 'Mailbox', 
+                            'label' => 'Mailbox',
                             'url' => ['/adminuidemo/default/mailbox'],
                             'linkOptions'=>[
-                                'class' => 'fa fa-envelope',                                
+                                'class' => 'fa fa-envelope',
                             ],
                             'badgeOptions' => [
                                 'type' => 'notification2',
@@ -235,56 +246,56 @@ $this->beginPage()
                             ],
                         ],
                         [
-                            'label' => 'Examples', 
+                            'label' => 'Examples',
                             #'url' => ['/site/chart'],
                             'linkOptions'=>[
                                 'class' => 'fa fa-folder',
                             ],
                             'items' => [
                                 [
-                                    'label' => 'Invoice', 
+                                    'label' => 'Invoice',
                                     'url' => ['/adminuidemo/examples/invoice'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Login', 
+                                    'label' => 'Login',
                                     'url' => ['/adminuidemo/examples/login'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Register', 
+                                    'label' => 'Register',
                                     'url' => ['/adminuidemo/examples/register'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Lockscreen', 
+                                    'label' => 'Lockscreen',
                                     'url' => ['/adminuidemo/examples/lockscreen'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => '404 Error', 
+                                    'label' => '404 Error',
                                     'url' => ['/adminuidemo/examples/error404'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => '500 Error', 
+                                    'label' => '500 Error',
                                     'url' => ['/adminuidemo/examples/error500'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
                                     ]
                                 ],
                                 [
-                                    'label' => 'Blank Page', 
+                                    'label' => 'Blank Page',
                                     'url' => ['/adminuidemo/examples/empty'],
                                     'linkOptions'=>[
                                         'class' => 'fa fa-angle-double-right',
@@ -306,19 +317,19 @@ $this->beginPage()
             </aside>
 
             <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">                
+            <aside class="right-side">
                 <!-- Main content -->
                 <section class="content">
                     <?= $content ?>
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
-    
-    
-   <?php /*/?> 
+
+
+   <?php /*/?>
     <div class="wrap">
         <?php
-            
+
         NavBar::begin([
                 'brandLabel' => 'My Company',
                 'brandUrl' => Yii::$app->homeUrl,
@@ -326,7 +337,7 @@ $this->beginPage()
                     'class' => 'navbar-inverse navbar-fixed-top',
                 ],
             ]);
-            
+
             $menuItems = [
                 ['label' => 'Home', 'url' => ['/site/index']],
             ];
@@ -339,13 +350,13 @@ $this->beginPage()
                     'linkOptions' => ['data-method' => 'post']
                 ];
             }
-            
+
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => $menuItems,
             ]);
             NavBar::end();
-            
+
         ?>
 
         <div class="container">
@@ -367,3 +378,4 @@ $this->beginPage()
 </body>
 </html>
 <?php $this->endPage() ?>
+<?php } ?>

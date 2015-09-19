@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiCalendarAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $css = [                
         'css/fullcalendar/fullcalendar.css',
     ];

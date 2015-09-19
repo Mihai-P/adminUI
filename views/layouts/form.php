@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 ?>
-<?php $this->beginContent('@yii/adminUi/themes/layouts/main.php'); ?>
+<?php $this->beginContent('@theme/views/layouts/main.php'); ?>
 <?php
 $flashes = Yii::$app->getSession()->getAllFlashes();
 if(count($flashes)) {

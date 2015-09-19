@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiwysihtmlEditorAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $css = [                
         'css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css',
     ];

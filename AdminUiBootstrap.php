@@ -20,8 +20,7 @@ class AdminUiBootstrap implements BootstrapInterface
     public function bootstrap($app)
     {
         \Yii::$classMap = array_merge(\Yii::$classMap, [
-            //'yii\grid\CheckboxColumn'=>'@yii/adminUi/widget/CheckboxColumn.php',
-            'yii\grid\ActionColumn' => '@yii/adminUi/widget/ActionColumn.php',
+            'yii\grid\ActionColumn' => '@theme/widget/ActionColumn.php',
             'theme\widgets\Pjax' => '@vendor/yiisoft/yii2/widgets/Pjax.php',
         ]);
         \Yii::setAlias('theme', __DIR__);
@@ -29,9 +28,13 @@ class AdminUiBootstrap implements BootstrapInterface
             'class' => 'yii\web\View',
             'theme' => [
                 'pathMap' => [
-                    '@backend/views' => '@backend/themes/adminui',
-                    '@dektrium/user/views/settings' => ['@cms/views/settings', '@dektrium/user/views/settings'],
+                    '@backend/views' => '@theme/views',
+                    '@dektrium/user/views' => ['@cms/views', '@theme/views', '@dektrium/user/views'],
+                    /*'@dektrium/user/views/settings' => ['@cms/views/settings', '@dektrium/user/views/settings'],
                     '@dektrium/user/views/admin' => ['@cms/views/admin', '@dektrium/user/views/admin'],
+                    '@dektrium/user/views/security' => ['@cms/views/security', '@theme/views/security', '@dektrium/user/views/security'],
+
+                    '@dektrium/user/views/recovery' => ['@cms/views/recovery', '@dektrium/user/views/recovery'],*/
                 ],
             //'baseUrl' => '@web/themes/adminui',
             ],
@@ -104,7 +107,7 @@ class AdminUiBootstrap implements BootstrapInterface
                     'fieldConfig' => [
                         'horizontalCssClasses' => [
                             'wrapper' => 'col-sm-9',
-                        ],        
+                        ],
                     ],
                 ]
             );

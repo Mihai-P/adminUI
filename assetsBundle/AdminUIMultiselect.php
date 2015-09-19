@@ -7,7 +7,7 @@ use yii\web\AssetBundle;
 
 class AdminUIMultiselect extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';
+    public $sourcePath = '@theme/assets/';
     public $css = [                
         'css/multiselect/jquery.asmselect.css',
     ];

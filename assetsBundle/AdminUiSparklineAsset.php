@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiSparklineAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';  
+    public $sourcePath = '@theme/assets/';  
     
     public $js  = [
             'js/plugins/sparkline/jquery.sparkline.min.js',

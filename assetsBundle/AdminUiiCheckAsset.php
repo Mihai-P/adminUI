@@ -17,7 +17,7 @@ use yii\web\AssetBundle;
  */
 class AdminUiiCheckAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/adminUi/assets/';  
+    public $sourcePath = '@theme/assets/';  
     
     public $js  = [
             'js/plugins/iCheck/icheck.min.js',
