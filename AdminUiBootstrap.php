@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-namespace yii\adminUi;
+namespace tez\theme;
 
 use Yii;
 use yii\base\Application;

@@ -36,10 +36,7 @@
   },
   "autoload": {
     "psr-4": {
-      "theme\\": ""
+      "tez\\theme\\": ""
     }
   },
-  "extra":{
-	"bootstrap":"yii\\adminUi\\AdminUiBootstrap"
-  }
 }
