@@ -39,4 +39,7 @@
       "tez\\theme\\": ""
     }
   },
+  "extra":{
+	"bootstrap":"tez\\theme\\AdminUiBootstrap"
+  }
 }
