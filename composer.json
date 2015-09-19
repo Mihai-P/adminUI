@@ -40,6 +40,6 @@
     }
   },
   "extra":{
-	"bootstrap":"tez\\theme\\AdminUiBootstrap"
+	"bootstrap":"tez\\theme\\AdminLTEBootstrap"
   }
 }

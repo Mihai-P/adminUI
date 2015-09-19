@@ -14,7 +14,7 @@ use yii\base\BootstrapInterface;
 use yii\web\Controller;
 use yii\base\Event;
 
-class AdminUiBootstrap implements BootstrapInterface
+class AdminLTEBootstrap implements BootstrapInterface
 {
 
     public function bootstrap($app)
