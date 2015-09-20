@@ -1,8 +1,8 @@
 <?php
-use yii\adminUi\widget\Box;
-use yii\adminUi\widget\Row;
-use yii\adminUi\widget\Column;
-use yii\adminUi\widget\SmallBox;
+use tez\theme\widget\Box;
+use tez\theme\widget\Row;
+use tez\theme\widget\Column;
+use tez\theme\widget\SmallBox;
 
 $this->title = 'Dashboard';
 //$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];

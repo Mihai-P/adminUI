@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\adminUi\widget\Connect;
+use tez\theme\widgets\Connect;
 
 /*
  * @var yii\web\View                   $this

@@ -1,9 +1,9 @@
 <?php
-use yii\adminUi\widget\Box,
-    yii\adminUi\widget\Row,
-    yii\adminUi\widget\Column,
-    yii\adminUi\widget\SmallBox,
-    yii\adminUi\widget\PageHeader;
+use tez\theme\widget\Box,
+    tez\theme\widget\Row,
+    tez\theme\widget\Column,
+    tez\theme\widget\SmallBox,
+    tez\theme\widget\PageHeader;
 
 $this->title = 'Widgets';
 //$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];

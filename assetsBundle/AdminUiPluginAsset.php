@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\adminUi\assetsBundle;
+namespace tez\theme\assetsBundle;
 
 use yii\web\AssetBundle;
 
@@ -20,6 +20,6 @@ class AdminUiPluginAsset extends AssetBundle
     public $depends = [
         'yii\web\JqueryAsset',
         'yii\bootstrap\BootstrapPluginAsset',
-        'yii\adminUi\assetsBundle\AdminUiAsset',
+        'tez\theme\assetsBundle\AdminUiAsset',
     ];
 }

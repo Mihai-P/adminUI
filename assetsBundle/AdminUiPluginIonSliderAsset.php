@@ -5,7 +5,7 @@
  * @projecturl https://github.com/mithun12000/adminUI
  * @country India
  */
-namespace yii\adminUi\assetsBundle;
+namespace tez\theme\assetsBundle;
 
 use yii\web\AssetBundle;
 /**
@@ -28,6 +28,6 @@ class AdminUiPluginIonSliderAsset extends AssetBundle
                     ];
     public $depends = [
         'yii\web\JqueryAsset',
-        'yii\adminUi\assetsBundle\AdminUiAsset',
+        'tez\theme\assetsBundle\AdminUiAsset',
     ];
 }

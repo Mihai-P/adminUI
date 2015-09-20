@@ -1,6 +1,6 @@
 <?php
 
-namespace yii\adminUi\assetsBundle;
+namespace tez\theme\assetsBundle;
 
 use yii\web\AssetBundle;
 
@@ -15,8 +15,8 @@ class AdminUIMultiselect extends AssetBundle
         'js/plugins/multiselect/jquery.asmselect.js',
     ];  
     public $depends = [
-        'yii\adminUi\assetsBundle\AdminUiAsset',
-        'yii\adminUi\assetsBundle\JqueryUI',        
+        'tez\theme\assetsBundle\AdminUiAsset',
+        'tez\theme\assetsBundle\JqueryUI',
     ];
 }
 ?>

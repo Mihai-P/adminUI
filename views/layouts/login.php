@@ -1,16 +1,16 @@
 <?php
 use backend\assets\AppAsset;
-use yii\adminUi\assetsBundle\AdminUiAsset;
+use tez\theme\assetsBundle\AdminUiAsset;
 use yii\UrlAsset\component\UrlAsset;
 use yii\helpers\Html;
-use yii\adminUi\widget\Header;
-use yii\adminUi\widget\Nav;
-use yii\adminUi\widget\NavBar;
-use yii\adminUi\widget\NavBarUser;
-use yii\adminUi\widget\NavBarMessage;
-use yii\adminUi\widget\NavBarNotification;
-use yii\adminUi\widget\NavBarTask;
-use yii\adminUi\widget\Breadcrumbs;
+use tez\theme\widget\Header;
+use tez\theme\widget\Nav;
+use tez\theme\widget\NavBar;
+use tez\theme\widget\NavBarUser;
+use tez\theme\widget\NavBarMessage;
+use tez\theme\widget\NavBarNotification;
+use tez\theme\widget\NavBarTask;
+use tez\theme\widget\Breadcrumbs;
 
 /**
  * @var \yii\web\View $this

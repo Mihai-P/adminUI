@@ -1,13 +1,13 @@
 {use class='backend\assets\AppAsset'}
 {use class='yii\helpers\Html'}
-{use class='yii\adminUi\widget\Header' type='block'}
-{use class='yii\adminUi\widget\Nav' type='function'}
-{use class='yii\adminUi\widget\NavBar' type='block'}
-{use class='yii\adminUi\widget\NavBarUser' type='function'}
-{use class='yii\adminUi\widget\NavBarMessage'}
-{use class='yii\adminUi\widget\NavBarNotification'}
-{use class='yii\adminUi\widget\NavBarTask'}
-{use class='yii\adminUi\widget\Breadcrumbs'}
+{use class='tez\theme\widget\Header' type='block'}
+{use class='tez\theme\widget\Nav' type='function'}
+{use class='tez\theme\widget\NavBar' type='block'}
+{use class='tez\theme\widget\NavBarUser' type='function'}
+{use class='tez\theme\widget\NavBarMessage'}
+{use class='tez\theme\widget\NavBarNotification'}
+{use class='tez\theme\widget\NavBarTask'}
+{use class='tez\theme\widget\Breadcrumbs'}
 {AppAsset::register($this)|void}
 {$this->beginPage()}
 <!DOCTYPE html>

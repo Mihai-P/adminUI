@@ -1,6 +1,6 @@
 <?php
 
-namespace yii\adminUi\module\controllers;
+namespace tez\theme\module\controllers;
 
 use yii\web\Controller;
 

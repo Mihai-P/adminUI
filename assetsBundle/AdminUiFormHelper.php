@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\adminUi\assetsBundle;
+namespace tez\theme\assetsBundle;
 
 use yii\web\AssetBundle;
 
@@ -25,6 +25,6 @@ class AdminUiFormHelper extends AssetBundle
     ];        
     
     public $depends = [
-        'yii\adminUi\assetsBundle\AdminUiActiveForm',
+        'tez\theme\assetsBundle\AdminUiActiveForm',
     ];
 }

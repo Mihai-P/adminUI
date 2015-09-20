@@ -1,6 +1,6 @@
 <?php
-use yii\adminUi\assetsBundle\AdminUiPluginSliderAsset,
- yii\adminUi\assetsBundle\AdminUiPluginIonSliderAsset;
+use tez\theme\assetsBundle\AdminUiPluginSliderAsset,
+ tez\theme\assetsBundle\AdminUiPluginIonSliderAsset;
 
 AdminUiPluginIonSliderAsset::register($this);
 AdminUiPluginSliderAsset::register($this);

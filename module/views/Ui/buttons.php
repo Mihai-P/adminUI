@@ -1,6 +1,6 @@
 <?php
-use yii\adminUi\widget\ButtonDropdown,
-    yii\adminUi\widget\ButtonGroup;
+use tez\theme\widget\ButtonDropdown,
+    tez\theme\widget\ButtonGroup;
 $this->title = 'Buttons';
 $this->params['breadcrumbs'][] = ['label' => 'Ui', 'url' => ['#']];
 $this->params['breadcrumbs'][] = $this->title;

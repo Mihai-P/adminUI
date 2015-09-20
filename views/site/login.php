@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\adminUi\widget\Alert;
+use tez\theme\widget\Alert;
 
 /**
  * @var yii\web\View $this

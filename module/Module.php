@@ -1,9 +1,9 @@
 <?php
-namespace yii\adminUi\module;
+namespace tez\theme\module;
 
 class Module extends \yii\base\Module
 {
-    public $controllerNamespace = 'yii\adminUi\module\controllers';
+    public $controllerNamespace = 'tez\theme\module\controllers';
     public function init(){
         parent::init();
     }

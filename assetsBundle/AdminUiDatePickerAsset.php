@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\adminUi\assetsBundle;
+namespace tez\theme\assetsBundle;
 
 use yii\web\AssetBundle;
 
@@ -27,7 +27,7 @@ class AdminUiDatePickerAsset extends AssetBundle
     ];  
     public $depends = [
         'yii\web\JqueryAsset',
-        'yii\adminUi\assetsBundle\AdminUiAsset',
-        'yii\adminUi\assetsBundle\AdminUiMomentAsset',
+        'tez\theme\assetsBundle\AdminUiAsset',
+        'tez\theme\assetsBundle\AdminUiMomentAsset',
     ];
 }

@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\adminUi\assetsBundle;
+namespace tez\theme\assetsBundle;
 
 use yii\web\AssetBundle;
 use yii\web\View as View;
@@ -31,6 +31,6 @@ class AdminUiHeadAsset extends AssetBundle
     ];
     
     public $depends = [
-            'yii\adminUi\assetsBundle\AdminUiExtraAsset',
+            'tez\theme\assetsBundle\AdminUiExtraAsset',
     ];    
 }

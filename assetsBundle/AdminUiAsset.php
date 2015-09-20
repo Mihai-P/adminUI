@@ -5,7 +5,7 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\adminUi\assetsBundle;
+namespace tez\theme\assetsBundle;
 
 use yii\web\AssetBundle;
 
@@ -22,6 +22,7 @@ class AdminUiAsset extends AssetBundle
     public $css = [
         'dist/css/AdminLTE.min.css',
         'dist/css/skins/_all-skins.min.css',
+        'plugins/iCheck/square/blue.css',
     ];
 
     public $js  = [
@@ -34,8 +35,8 @@ class AdminUiAsset extends AssetBundle
             'yii\web\JqueryAsset',
             'yii\bootstrap\BootstrapAsset',
             'yii\bootstrap\BootstrapPluginAsset',
-            'yii\adminUi\assetsBundle\AdminUiHeadAsset',
-            'yii\adminUi\assetsBundle\FontAwesomeAsset',
-            'yii\adminUi\assetsBundle\FontIoniconsAsset',
+            'tez\theme\assetsBundle\AdminUiHeadAsset',
+            'tez\theme\assetsBundle\FontAwesomeAsset',
+            'tez\theme\assetsBundle\FontIoniconsAsset',
     ];
 }

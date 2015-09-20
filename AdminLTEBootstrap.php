@@ -67,7 +67,7 @@ class AdminLTEBootstrap implements BootstrapInterface
                 'yii\widgets\ActiveFormAsset' => [
                     'js' => [],
                     'depends' => [
-                        'yii\adminUi\assetsBundle\AdminUiActiveForm',
+                        'tez\theme\assetsBundle\AdminUiActiveForm',
                     ],
                 ],
                 'yii\grid\GridViewAsset' => [

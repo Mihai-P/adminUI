@@ -1,14 +1,14 @@
 <?php
-use yii\adminUi\widget\PageHeader,
- yii\adminUi\widget\Alert,
- yii\adminUi\widget\Box,
- yii\adminUi\widget\Row,
- yii\adminUi\widget\Tabs,
- yii\adminUi\widget\Callout,
- yii\adminUi\widget\Carousel,
- yii\adminUi\widget\Collapse,
- yii\adminUi\widget\Progress,
- yii\adminUi\widget\Column;
+use tez\theme\widget\PageHeader,
+ tez\theme\widget\Alert,
+ tez\theme\widget\Box,
+ tez\theme\widget\Row,
+ tez\theme\widget\Tabs,
+ tez\theme\widget\Callout,
+ tez\theme\widget\Carousel,
+ tez\theme\widget\Collapse,
+ tez\theme\widget\Progress,
+ tez\theme\widget\Column;
 
 $this->title = 'General UI';
 $this->params['breadcrumbs'][] = ['label' => 'Ui', 'url' => ['#']];
