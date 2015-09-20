@@ -2,14 +2,14 @@
 use backend\assets\AppAsset;
 use yii\UrlAsset\component\UrlAsset;
 use yii\helpers\Html;
-use tez\theme\widget\Header;
-use tez\theme\widget\Nav;
-use tez\theme\widget\NavBar;
-use tez\theme\widget\NavBarUser;
-use tez\theme\widget\NavBarMessage;
-use tez\theme\widget\NavBarNotification;
-use tez\theme\widget\NavBarTask;
-use tez\theme\widget\Breadcrumbs;
+use tez\theme\widgets\Header;
+use tez\theme\widgets\Nav;
+use tez\theme\widgets\NavBar;
+use tez\theme\widgets\NavBarUser;
+use tez\theme\widgets\NavBarMessage;
+use tez\theme\widgets\NavBarNotification;
+use tez\theme\widgets\NavBarTask;
+use tez\theme\widgets\Breadcrumbs;
 
 if (Yii::$app->user->isGuest) {
 /**

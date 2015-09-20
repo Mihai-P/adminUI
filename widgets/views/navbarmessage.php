@@ -16,7 +16,17 @@ $bundle = AdminUiAsset::register($this);
 			<li><!-- start message -->
 				<a href="#">
 					<div class="pull-left">
-						<img src="http://gravatar.com/avatar/<?= Yii::$app->user->identity->profile->gravatar_id ?>?s=64" class="img-circle" alt="<?= Yii::$app->user->identity->profile->name ?>"/>
+						<img src="<?php
+							if(isset(Yii::$app->user->identity->profile->gravatar_id)) {
+								echo "http://gravatar.com/avatar/ " . Yii::$app->user->identity->profile->gravatar_id . "s=64";
+							} else {
+								echo $bundle->baseUrl . "/img/avatar2.png";
+							} ?>" class="img-circle" alt="<?php
+							if(isset(Yii::$app->user->identity->profile->name)) {
+								echo Yii::$app->user->identity->profile->name;
+							} else {
+								echo "Unknown";
+							}?>"/>
 					</div>
 					<h4>
 						Support Team

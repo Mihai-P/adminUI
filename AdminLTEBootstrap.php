@@ -20,7 +20,7 @@ class AdminLTEBootstrap implements BootstrapInterface
     public function bootstrap($app)
     {
         \Yii::$classMap = array_merge(\Yii::$classMap, [
-            'yii\grid\ActionColumn' => '@theme/widget/ActionColumn.php',
+            'yii\grid\ActionColumn' => '@theme/widgets/ActionColumn.php',
             'theme\widgets\Pjax' => '@vendor/yiisoft/yii2/widgets/Pjax.php',
         ]);
         \Yii::setAlias('theme', __DIR__);
