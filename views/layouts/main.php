@@ -40,39 +40,45 @@ $this->beginPage()
 <body class="skin-blue">
 <?php
     $this->beginBody();
+?>
+<?php if (isset($this->blocks['header'])): ?>
+    <?= $this->blocks['header'] ?>
+<?php else: ?>
+<?php
     Header::begin([
         'brandLabel' => 'My Company',
-                'brandLabel' => Yii::$app->name,
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'tag'   => 'header',
-                    'class' => 'main-header',
-                ],
-        ]);
-        NavBar::begin([
-                'options' => [
-                    'class' => 'navbar-static-top',
-                ],
-                'breadCrumbs' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-            ]);
+        'brandLabel' => "1" . Yii::$app->name,
+        'brandUrl' => Yii::$app->homeUrl,
+        'options' => [
+            'tag'   => 'header',
+            'class' => 'main-header',
+        ],
+    ]);
+    NavBar::begin([
+        'options' => [
+            'class' => 'navbar-static-top',
+        ],
+        'breadCrumbs' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]);
 
-            $menuItems = [];
-            if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'']];
-            }else{
-                $menuItems[] = ['content'=> NavBarMessage::Widget(),'options'=>['class'=>'dropdown messages-menu']];
-                $menuItems[] = ['content'=> NavBarNotification::Widget(),'options'=>['class'=>'dropdown notifications-menu']];
-                $menuItems[] = ['content'=> NavBarTask::Widget(),'options'=>['class'=>'dropdown tasks-menu']];
-                $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'dropdown user user-menu']];
-            }
+    $menuItems = [];
+    if (Yii::$app->user->isGuest) {
+        $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'']];
+    }else{
+        $menuItems[] = ['content'=> NavBarMessage::Widget(),'options'=>['class'=>'dropdown messages-menu']];
+        $menuItems[] = ['content'=> NavBarNotification::Widget(),'options'=>['class'=>'dropdown notifications-menu']];
+        $menuItems[] = ['content'=> NavBarTask::Widget(),'options'=>['class'=>'dropdown tasks-menu']];
+        $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'dropdown user user-menu']];
+    }
 
-            echo Nav::widget([
-                'options' => ['class' => 'nav navbar-nav'],
-                'items' => $menuItems,
-            ]);
-        NavBar::end();
-     Header::end();
+    echo Nav::widget([
+        'options' => ['class' => 'nav navbar-nav'],
+        'items' => $menuItems,
+    ]);
+    NavBar::end();
+    Header::end();
 ?>
+<?php endif; ?>
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="left-side sidebar-offcanvas">

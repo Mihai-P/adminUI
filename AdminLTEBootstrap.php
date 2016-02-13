@@ -28,8 +28,11 @@ class AdminLTEBootstrap implements BootstrapInterface
             'class' => 'yii\web\View',
             'theme' => [
                 'pathMap' => [
-                    '@backend/views' => '@theme/views',
-                    '@dektrium/user/views' => ['@cms/views', '@theme/views', '@dektrium/user/views'],
+                    '@app/views/layouts' => ['@app/views/layouts', '@theme/views/layouts'],
+                    '@cms/views/layouts' => ['@app/views/layouts', '@cms/views/layouts', '@theme/views/layouts'],
+                    '@app/views' => ['@app/views', '@theme/views'],
+//                    '@backend/views' => ['@backend/views', '@theme/views'],
+                    '@dektrium/user/views' => ['@theme/views', '@dektrium/user/views'],
                     /*'@dektrium/user/views/settings' => ['@cms/views/settings', '@dektrium/user/views/settings'],
                     '@dektrium/user/views/admin' => ['@cms/views/admin', '@dektrium/user/views/admin'],
                     '@dektrium/user/views/security' => ['@cms/views/security', '@theme/views/security', '@dektrium/user/views/security'],
