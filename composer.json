@@ -1,7 +1,7 @@
 {
   "name": "tez/yii2theme-adminui",
   "description": "Yii2 admin ui based on AdminLTE free template",
-  "version":"1.0.0",
+  "version":"1.0.2",
   "keywords": [
     "yii2",
 	"theme",
