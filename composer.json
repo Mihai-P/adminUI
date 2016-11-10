@@ -25,13 +25,13 @@
   "require": {
     "yiisoft/yii2":">= 2.0.0",
     "yiisoft/yii2-bootstrap": ">= 2.0.0",
-    "bower-asset/font-awesome": "4.2.0",
-    "bower-asset/Ionicons":"1.5.2",
-    "bower-asset/ckeditor":"4.*",
-    "bower-asset/bootstrap-daterangepicker":"1.3.13",
-    "bower-asset/tinymce":"4.*",
-    "bower-asset/dropzone":"3.*",
-    "bower-asset/jquery-ui":"1.11.2",
+    "bower/font-awesome": "4.2.0",
+    "bower/Ionicons":"1.5.2",
+    "bower/ckeditor":"4.*",
+    "bower/bootstrap-daterangepicker":"1.3.13",
+    "bower/tinymce":"4.*",
+    "bower/dropzone":"3.*",
+    "bower/jquery-ui":"1.11.2",
     "almasaeed2010/adminlte":"2.*"
   },
   "autoload": {
