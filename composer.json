@@ -1,7 +1,7 @@
 {
   "name": "tez/yii2theme-adminui",
   "description": "Yii2 admin ui based on AdminLTE free template",
-  "version":"1.0.5",
+  "version":"1.0.6",
   "keywords": [
     "yii2",
 	"theme",
@@ -25,7 +25,6 @@
   "require": {
     "yiisoft/yii2":">= 2.0.0",
     "yiisoft/yii2-bootstrap": ">= 2.0.0",
-    "bower-assets/font-awesome": "4.2.0",
     "bower-assets/Ionicons":"1.5.2",
     "bower-assets/ckeditor":"4.*",
     "bower-assets/bootstrap-daterangepicker":"1.3.13",
