@@ -25,7 +25,6 @@
   "require": {
     "yiisoft/yii2":">= 2.0.0",
     "yiisoft/yii2-bootstrap": ">= 2.0.0",
-    "bower-assets/Ionicons":"1.5.2",
     "bower-assets/ckeditor":"4.*",
     "bower-assets/bootstrap-daterangepicker":"1.3.13",
     "bower-assets/tinymce":"4.*",
