@@ -8,7 +8,7 @@
     "adminUi",
 	"layout"
   ],
-  "type": "yii2-extension",
+  "type": "yii2-theme",
   "license": "GPLv2",
   "support": {
     "issues": "https://github.com/Mihai-p/yii2theme-adminUI/issues?page=1&state=open",
@@ -35,7 +35,4 @@
       "tez\\theme\\": ""
     }
   },
-  "extra":{
-	"bootstrap":"tez\\theme\\AdminLTEBootstrap"
-  }
 }
