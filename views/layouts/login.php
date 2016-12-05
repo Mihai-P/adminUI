@@ -1,5 +1,5 @@
 <?php
-use backend\assets\AppAsset;
+use app\assets\AppAsset;
 use tez\theme\assetsBundle\AdminUiAsset;
 use yii\UrlAsset\component\UrlAsset;
 use yii\helpers\Html;

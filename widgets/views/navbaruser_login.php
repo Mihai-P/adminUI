@@ -1,41 +1,41 @@
 <?php
 use yii\helpers\Url;
 use yii\helpers\Html;
-use tez\theme\assetsBundle\AdminUiAsset;
+use tez\theme\assetsBundle\AdminUiDistAsset;
 
-$bundle = AdminUiAsset::register($this);
+$bundle = AdminUiDistAsset::register($this);
 if($type=='topbar'){
 ?>
 <a href="#" class="dropdown-toggle navbar-username" data-toggle="dropdown">
 	<i class="glyphicon glyphicon-user"></i>
 	<span><?php
-	if(isset(Yii::$app->user->identity->profile->firstname)) {
-		echo Yii::$app->user->identity->profile->firstname;
-	} else {
+//	if(isset(Yii::$app->user->identity->profile->firstname)) {
+//		echo Yii::$app->user->identity->profile->firstname;
+//	} else {
 		echo "Profile";
-	}?> <i class="caret"></i></span>
+//	}?><!-- <i class="caret"></i></span>-->
 </a>
 <ul class="dropdown-menu">
 	<!-- User image -->
 	<li class="user-header bg-light-blue">
 		<img src="<?php
-			if(isset(Yii::$app->user->identity->profile->gravatar_id)) {
-				echo "http://gravatar.com/avatar/ " . Yii::$app->user->identity->profile->gravatar_id . "s=64";
-			} else {
+//			if(isset(Yii::$app->user->identity->profile->gravatar_id)) {
+//				echo "http://gravatar.com/avatar/ " . Yii::$app->user->identity->profile->gravatar_id . "s=64";
+//			} else {
 				echo $bundle->baseUrl . "/img/avatar2.png";
-			} ?>" class="img-circle" alt="<?php
-			if(isset(Yii::$app->user->identity->profile->name)) {
-				echo Yii::$app->user->identity->profile->name;
-			} else {
+			//} ?>" class="img-circle" alt="<?php
+//			if(isset(Yii::$app->user->identity->profile->name)) {
+//				echo Yii::$app->user->identity->profile->name;
+//			} else {
 				echo "Unknown";
-			}?>" />
+//			}?><!--" />-->
 		<p>
 			<?php
-			if(isset(Yii::$app->user->identity->profile->name)) {
-				echo Yii::$app->user->identity->profile->name . "<small>Member since " . date('M. Y',  Yii::$app->user->identity->created_at) . "</small>";
-			} else {
+//			if(isset(Yii::$app->user->identity->profile->name)) {
+//				echo Yii::$app->user->identity->profile->name . "<small>Member since " . date('M. Y',  Yii::$app->user->identity->created_at) . "</small>";
+//			} else {
 				echo "Unknown";
-			}?>
+//			}?>
 
 		</p>
 	</li>
@@ -66,26 +66,27 @@ if($type=='topbar'){
 <div class="user-panel">
     <div class="pull-left image">
         <img src="<?php
-			if(isset(Yii::$app->user->identity->profile->gravatar_id)) {
-				echo "http://gravatar.com/avatar/ " . Yii::$app->user->identity->profile->gravatar_id . "s=64";
-			} else {
+//			if(isset(Yii::$app->user->identity->profile->gravatar_id)) {
+//				echo "http://gravatar.com/avatar/ " . Yii::$app->user->identity->profile->gravatar_id . "s=64";
+//			} else {
 				echo $bundle->baseUrl . "/img/avatar2.png";
-			} ?>" class="img-circle" alt="<?php
-			if(isset(Yii::$app->user->identity->profile->name)) {
-				echo Yii::$app->user->identity->profile->name;
-			} else {
+//			} ?>" class="img-circle"><br>
+		<?php
+//			if(isset(Yii::$app->user->identity->profile->name)) {
+//				echo Yii::$app->user->identity->profile->name;
+//			} else {
 				echo "Unknown";
-			}?>" />
+//			}?>
     </div>
     <div class="pull-left info">
+		<p>Alexander Pierce</p>
+		<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 		<?php
-		if(isset(Yii::$app->user->identity->profile->name)) {
-			echo "<p>Hello, " . Html::a(Yii::$app->user->identity->profile->firstname, ['/user/settings/profile']) . "</p>";
-		} else {
-			echo "Unknown";
-		}?>
-
-        <i class="fa fa-circle text-success"></i> Online
+//		if(isset(Yii::$app->user->identity->profile->name)) {
+//			echo "<p>Hello, " . Html::a(Yii::$app->user->identity->profile->firstname, ['/user/settings/profile']) . "</p>";
+//		} else {
+//			echo "Unknown";
+//		}?>
     </div>
 </div>
 <?php } ?>

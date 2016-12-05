@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Url;
-use tez\theme\assetsBundle\AdminUiAsset;
+use tez\theme\assetsBundle\AdminUiDistAsset;
 
-$bundle = AdminUiAsset::register($this);
+$bundle = AdminUiDistAsset::register($this);
 ?>
 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 	<i class="fa fa-envelope"></i>
@@ -17,16 +17,16 @@ $bundle = AdminUiAsset::register($this);
 				<a href="#">
 					<div class="pull-left">
 						<img src="<?php
-							if(isset(Yii::$app->user->identity->profile->gravatar_id)) {
-								echo "http://gravatar.com/avatar/ " . Yii::$app->user->identity->profile->gravatar_id . "s=64";
-							} else {
+//							if(isset(Yii::$app->user->identity->profile->gravatar_id)) {
+//								echo "http://gravatar.com/avatar/ " . Yii::$app->user->identity->profile->gravatar_id . "s=64";
+//							} else {
 								echo $bundle->baseUrl . "/img/avatar2.png";
-							} ?>" class="img-circle" alt="<?php
-							if(isset(Yii::$app->user->identity->profile->name)) {
-								echo Yii::$app->user->identity->profile->name;
-							} else {
+							//} ?>" class="img-circle" alt="<?php
+//							if(isset(Yii::$app->user->identity->profile->name)) {
+//								echo Yii::$app->user->identity->profile->name;
+//							} else {
 								echo "Unknown";
-							}?>"/>
+							//}?>"/>
 					</div>
 					<h4>
 						Support Team

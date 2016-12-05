@@ -10,20 +10,16 @@ namespace tez\theme\assetsBundle;
 use yii\web\AssetBundle;
 
 /**
- * Asset bundle for the Twitter bootstrap css files.
+ * Asset bundle for the Twitter bootstrap javascript files.
  *
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
 class AdminUiPluginAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor/almasaeed2010/adminlte/plugins/';
-    public $baseUrl = '@web';
-    public $css = [
-        'iCheck/square/blue.css',
-    ];
-
-    public $js  = [
-        'iCheck/icheck.min.js'
+    public $depends = [
+        'yii\web\JqueryAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
+        'tez\theme\assetsBundle\AdminUiAsset',
     ];
 }

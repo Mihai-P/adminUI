@@ -50,7 +50,7 @@ class Breadcrumbs extends Widget
     /**
      * @var string the name of the breadcrumb container tag.
      */
-    public $tag = 'ul';
+    public $tag = 'ol';
     /**
      * @var array the HTML attributes for the breadcrumb container tag.
      * @see \yii\helpers\Html::renderTagAttributes() for details on how attributes are being rendered.

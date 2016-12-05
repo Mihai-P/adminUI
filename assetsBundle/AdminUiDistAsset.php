@@ -15,20 +15,23 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AdminUiAsset extends AssetBundle
+class AdminUiDistAsset extends AssetBundle
 {
-    public $sourcePath = '@theme/assets/';
+    public $sourcePath = '@vendor/almasaeed2010/adminlte/dist/';
     public $baseUrl = '@web';
     public $css = [
-        'css/theme.css',
+        'css/AdminLTE.min.css',
+        'css/skins/_all-skins.min.css',
     ];
 
     public $js  = [
-        'js/theme.js',
+        'js/app.js',
     ];
 
     public $depends = [
-        'tez\theme\assetsBundle\AdminUiDistAsset',
-        'tez\theme\assetsBundle\AdminUiPluginAsset',
+        'yii\web\JqueryAsset',
+        'yii\bootstrap\BootstrapAsset',
+        'yii\bootstrap\BootstrapPluginAsset',
+        'rmrevin\yii\fontawesome\AssetBundle',
     ];
 }

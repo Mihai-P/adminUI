@@ -26,21 +26,21 @@ class AdminLTEBootstrap implements BootstrapInterface
         \Yii::setAlias('theme', __DIR__);
         $app->set('view', [
             'class' => 'yii\web\View',
-            'theme' => [
-                'pathMap' => [
-                    '@app/views/layouts' => ['@app/views/layouts', '@theme/views/layouts'],
-                    '@cms/views/layouts' => ['@app/views/layouts', '@cms/views/layouts', '@theme/views/layouts'],
-                    '@app/views' => ['@app/views', '@theme/views'],
-//                    '@backend/views' => ['@backend/views', '@theme/views'],
-                    '@dektrium/user/views' => ['@theme/views', '@dektrium/user/views'],
-                    /*'@dektrium/user/views/settings' => ['@cms/views/settings', '@dektrium/user/views/settings'],
-                    '@dektrium/user/views/admin' => ['@cms/views/admin', '@dektrium/user/views/admin'],
-                    '@dektrium/user/views/security' => ['@cms/views/security', '@theme/views/security', '@dektrium/user/views/security'],
-
-                    '@dektrium/user/views/recovery' => ['@cms/views/recovery', '@dektrium/user/views/recovery'],*/
-                ],
-            //'baseUrl' => '@web/themes/adminui',
-            ],
+//            'theme' => [
+//                'pathMap' => [
+//                    '@app/views/layouts' => ['@app/views/layouts', '@theme/views/layouts'],
+//                    '@cms/views/layouts' => ['@app/views/layouts', '@cms/views/layouts', '@theme/views/layouts'],
+//                    '@app/views' => ['@app/views', '@theme/views'],
+////                    '@backend/views' => ['@backend/views', '@theme/views'],
+//                    '@dektrium/user/views' => ['@theme/views', '@dektrium/user/views'],
+//                    /*'@dektrium/user/views/settings' => ['@cms/views/settings', '@dektrium/user/views/settings'],
+//                    '@dektrium/user/views/admin' => ['@cms/views/admin', '@dektrium/user/views/admin'],
+//                    '@dektrium/user/views/security' => ['@cms/views/security', '@theme/views/security', '@dektrium/user/views/security'],
+//
+//                    '@dektrium/user/views/recovery' => ['@cms/views/recovery', '@dektrium/user/views/recovery'],*/
+//                ],
+//            //'baseUrl' => '@web/themes/adminui',
+//            ],
             'renderers' => [
                 'tpl' => [
                     'class' => 'yii\smarty\ViewRenderer',
@@ -70,16 +70,16 @@ class AdminLTEBootstrap implements BootstrapInterface
                 'yii\widgets\ActiveFormAsset' => [
                     'js' => [],
                     'depends' => [
-                        'tez\theme\assetsBundle\AdminUiActiveForm',
+                        //'tez\theme\assetsBundle\AdminUiActiveForm',
                     ],
                 ],
                 'yii\grid\GridViewAsset' => [
                     'depends' => [
-                        'backend\assets\AppAsset'
+                        'app\assets\AppAsset'
                     ],
                 ],
             ],
-            'linkAssets' => true,
+            'linkAssets' => false,
         ]);
         if (Yii::$app->id == "app-backend") {
             Yii::$container->set('yii\grid\GridView', [

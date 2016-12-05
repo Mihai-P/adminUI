@@ -1,387 +1,356 @@
 <?php
-use backend\assets\AppAsset;
-use yii\UrlAsset\component\UrlAsset;
+use app\assets\AppAsset;
 use yii\helpers\Html;
-use tez\theme\widgets\Header;
+use tez\theme\assetsBundle\AdminUiAsset;
+use yii\helpers\ArrayHelper;
 use tez\theme\widgets\Nav;
-use tez\theme\widgets\NavBar;
-use tez\theme\widgets\NavBarUser;
-use tez\theme\widgets\NavBarMessage;
-use tez\theme\widgets\NavBarNotification;
-use tez\theme\widgets\NavBarTask;
 use tez\theme\widgets\Breadcrumbs;
-
-if (Yii::$app->user->isGuest) {
-/**
- * Do not use this code in your template. Remove it.
- * Instead, use the code  $this->layout = '//main-login'; in your controller.
- */
-    echo $this->render(
-        'login',
-        ['content' => $content]
-    );
-} else {
-
+use yii\helpers\Url;
 /**
  * @var \yii\web\View $this
  * @var string $content
  */
+
+AdminUiAsset::register($this);
 AppAsset::register($this);
-$this->beginPage()
+$distAsset = Yii::$app->getAssetManager()->getBundle('tez\theme\assetsBundle\AdminUiDistAsset');
+$this->beginPage();
 ?><!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
     <meta charset="<?= Yii::$app->charset ?>"/>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <title><?= Html::encode($this->title) ?></title>
-	<?= Html::csrfMetaTags() ?>
+    <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
-<body class="skin-blue">
-<?php
-    $this->beginBody();
-?>
-<?php if (isset($this->blocks['header'])): ?>
-    <?= $this->blocks['header'] ?>
-<?php else: ?>
-<?php
-    Header::begin([
-        'brandLabel' => 'My Company',
-        'brandLabel' => "1" . Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'tag'   => 'header',
-            'class' => 'main-header',
-        ],
-    ]);
-    NavBar::begin([
-        'options' => [
-            'class' => 'navbar-static-top',
-        ],
-        'breadCrumbs' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-    ]);
+<body class="hold-transition skin-blue sidebar-mini">
+<!-- Site wrapper -->
+<div class="wrapper">
+<?php $this->beginBody();?>
+    <header class="main-header">
+        <!-- Logo -->
+        <?php if(ArrayHelper::getValue($this->blocks, 'logo', false)): ?>
+            <?= ArrayHelper::getValue($this->blocks, 'logo', ''); ?>
+        <?php else: ?>
+        <a href="<?=Url::to(['/'])?>" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>A</b>LT</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Admin</b>LTE</span>
+        </a>
+        <?php endif; ?>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <?php if(ArrayHelper::getValue($this->params, 'showToggle', true)): ?>
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <?php endif; ?>
+            <?php if (isset($this->blocks['navbar1']) || isset($this->blocks['navbar2']) || isset($this->blocks['navbar3']) || isset($this->blocks['navbar4']) || isset($this->blocks['navbar5'])): ?>
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <?= ArrayHelper::getValue($this->blocks, 'navbar1', ''); ?>
+                    <?= ArrayHelper::getValue($this->blocks, 'navbar2', ''); ?>
+                    <?= ArrayHelper::getValue($this->blocks, 'navbar3', ''); ?>
+                    <?= ArrayHelper::getValue($this->blocks, 'navbar4', ''); ?>
+                    <?= ArrayHelper::getValue($this->blocks, 'navbar5', ''); ?>
+                </ul>
+            </div>
+            <?php endif; ?>
+        </nav>
+    </header>
 
-    $menuItems = [];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'']];
-    }else{
-        $menuItems[] = ['content'=> NavBarMessage::Widget(),'options'=>['class'=>'dropdown messages-menu']];
-        $menuItems[] = ['content'=> NavBarNotification::Widget(),'options'=>['class'=>'dropdown notifications-menu']];
-        $menuItems[] = ['content'=> NavBarTask::Widget(),'options'=>['class'=>'dropdown tasks-menu']];
-        $menuItems[] = ['content'=> NavBarUser::Widget(),'options'=>['class'=>'dropdown user user-menu']];
-    }
+    <!-- =============================================== -->
 
-    echo Nav::widget([
-        'options' => ['class' => 'nav navbar-nav'],
-        'items' => $menuItems,
-    ]);
-    NavBar::end();
-    Header::end();
-?>
-<?php endif; ?>
-        <div class="wrapper row-offcanvas row-offcanvas-left">
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="left-side sidebar-offcanvas">
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <!-- Sidebar user panel -->
-                    <?= NavBarUser::Widget(['type' =>'sidebar']);?>
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" id="keywords" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-<?php
-                    $menuitems = [
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar user panel -->
+            <?= ArrayHelper::getValue($this->blocks, 'user-panel', ''); ?>
+            <?php if(ArrayHelper::getValue($this->params, 'showSearch', true)): ?>
+            <!-- search form -->
+            <form action="#" method="get" class="sidebar-form">
+                <div class="input-group">
+                    <input type="text" name="q" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+                </div>
+            </form>
+            <?php endif; ?>
+
+            <?php
+            $menuitems = [
+//                [
+//                    'content' => 'MAIN NAVIGATION',
+//                    'options' => [
+//                        'class' => 'header',
+//                    ],
+//                ],
+                [
+                    'label' => 'Dashboard',
+                    'url' => ['/'],
+                    'options' => [
+                        'class' => 'treeview',
+                    ],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-dashboard',
+                    ]
+                ],
+                [
+                    'label' => 'Tags',
+                    'url' => ['/cms/tag'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-th',
+                    ],
+                    'badgeOptions' => [
+                        'type' => 'new',
+                        'text' => 'new',
+                    ],
+                ],
+                [
+                    'label' => 'Blog',
+                    #'url' => ['/site/chart'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-bar-chart-o',
+                    ],
+                    'items' => [
                         [
-                            'content' => 'MAIN NAVIGATION',
-                            'options' => [
-                                'class' => 'header',
-                            ],
-                        ],
-                        [
-                            'label' => 'Dashboard',
-                            'url' => ['/'],
-                            'options' => [
-                                'class' => 'treeview',
-                            ],
+                            'label' => 'Posts',
+                            'url' => ['/blog/blog-post'],
                             'linkOptions'=>[
-                                'class' => 'fa fa-dashboard',
+                                'class' => 'fa fa-circle-o',
                             ]
                         ],
                         [
-                            'label' => 'Tags',
-                            'url' => ['/cms/tag'],
+                            'label' => 'Comments',
+                            'url' => ['/blog/blog-comments'],
                             'linkOptions'=>[
-                                'class' => 'fa fa-th',
-                            ],
-                            'badgeOptions' => [
-                                'type' => 'new',
-                                'text' => 'new',
-                            ],
+                                'class' => 'fa fa-circle-o',
+                            ]
                         ],
-                        [
-                            'label' => 'Blog',
-                            #'url' => ['/site/chart'],
-                            'linkOptions'=>[
-                                'class' => 'fa fa-bar-chart-o',
-                            ],
-                            'items' => [
-                                [
-                                    'label' => 'Posts',
-                                    'url' => ['/blog/blog-post'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-circle-o',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Comments',
-                                    'url' => ['/blog/blog-comments'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-circle-o',
-                                    ]
-                                ],
-                            ],
-                        ],
-                        [
-                            'label' => 'Users',
-                            #'url' => ['/site/chart'],
-                            'linkOptions'=>[
-                                'class' => 'fa fa-laptop',
-                            ],
-                            'items' => [
-                                [
-                                    'label' => 'Administrators',
-                                    'url' => ['/user/admin/index'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Permissions',
-                                    'url' => ['/rbac/permission/index'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Role',
-                                    'url' => ['/rbac/role/index'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                            ],
-                        ],
-                        [
-                            'label' => 'Forms',
-                            #'url' => ['/site/chart'],
-                            'linkOptions'=>[
-                                'class' => 'fa fa-edit',
-                            ],
-                            'items' => [
-                                [
-                                    'label' => 'General Elements',
-                                    'url' => ['/adminuidemo/forms/general'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Advanced Elements',
-                                    'url' => ['/adminuidemo/forms/advanced'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Editors',
-                                    'url' => ['/adminuidemo/forms/editors'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ]
-                            ],
-                        ],
-                        [
-                            'label' => 'Tables',
-                            #'url' => ['/site/chart'],
-                            'linkOptions'=>[
-                                'class' => 'fa fa-table',
-                            ],
-                            'items' => [
-                                [
-                                    'label' => 'Simple tables',
-                                    'url' => ['/adminuidemo/tables/simple'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Data tables',
-                                    'url' => ['/adminuidemo/tables/data'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ]
-                            ],
-                        ],
-                        [
-                            'label' => 'Calendar',
-                            'url' => ['/adminuidemo/default/calendar'],
-                            'linkOptions'=>[
-                                'class' => 'fa fa-calendar',
-                            ],
-                            'badgeOptions' => [
-                                'type' => 'notification1',
-                                'text' => '3',
-                            ],
-                        ],
-                        [
-                            'label' => 'Mailbox',
-                            'url' => ['/adminuidemo/default/mailbox'],
-                            'linkOptions'=>[
-                                'class' => 'fa fa-envelope',
-                            ],
-                            'badgeOptions' => [
-                                'type' => 'notification2',
-                                'text' => '13',
-                            ],
-                        ],
-                        [
-                            'label' => 'Examples',
-                            #'url' => ['/site/chart'],
-                            'linkOptions'=>[
-                                'class' => 'fa fa-folder',
-                            ],
-                            'items' => [
-                                [
-                                    'label' => 'Invoice',
-                                    'url' => ['/adminuidemo/examples/invoice'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Login',
-                                    'url' => ['/adminuidemo/examples/login'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Register',
-                                    'url' => ['/adminuidemo/examples/register'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Lockscreen',
-                                    'url' => ['/adminuidemo/examples/lockscreen'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => '404 Error',
-                                    'url' => ['/adminuidemo/examples/error404'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => '500 Error',
-                                    'url' => ['/adminuidemo/examples/error500'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ],
-                                [
-                                    'label' => 'Blank Page',
-                                    'url' => ['/adminuidemo/examples/empty'],
-                                    'linkOptions'=>[
-                                        'class' => 'fa fa-angle-double-right',
-                                    ]
-                                ]
-                            ],
-                        ],
-                    ];
-                    /* TODO
-					if($this->params['urls']){
-						$menuitems = $this->params['urls'];
-					}*/
-                    echo Nav::widget([
-                        'options' => ['class' => 'sidebar-menu'],
-                        'items' => $menuitems,
-                    ]);
-                    ?>
-                </section>
-            </aside>
-
-            <!-- Right side column. Contains the navbar and content of the page -->
-            <aside class="right-side">
-                <!-- Main content -->
-                <section class="content">
-                    <?= $content ?>
-                </section><!-- /.content -->
-            </aside><!-- /.right-side -->
-        </div><!-- ./wrapper -->
-
-
-   <?php /*/?>
-    <div class="wrap">
-        <?php
-
-        NavBar::begin([
-                'brandLabel' => 'My Company',
-                'brandUrl' => Yii::$app->homeUrl,
-                'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
+                    ],
                 ],
-            ]);
-
-            $menuItems = [
-                ['label' => 'Home', 'url' => ['/site/index']],
+                [
+                    'label' => 'Users',
+                    #'url' => ['/site/chart'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-laptop',
+                    ],
+                    'items' => [
+                        [
+                            'label' => 'Administrators',
+                            'url' => ['/user/admin/index'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Permissions',
+                            'url' => ['/rbac/permission/index'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Role',
+                            'url' => ['/rbac/role/index'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                    ],
+                ],
+                [
+                    'label' => 'Forms',
+                    #'url' => ['/site/chart'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-edit',
+                    ],
+                    'items' => [
+                        [
+                            'label' => 'General Elements',
+                            'url' => ['/adminuidemo/forms/general'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Advanced Elements',
+                            'url' => ['/adminuidemo/forms/advanced'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Editors',
+                            'url' => ['/adminuidemo/forms/editors'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ]
+                    ],
+                ],
+                [
+                    'label' => 'Tables',
+                    #'url' => ['/site/chart'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-table',
+                    ],
+                    'items' => [
+                        [
+                            'label' => 'Simple tables',
+                            'url' => ['/adminuidemo/tables/simple'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Data tables',
+                            'url' => ['/adminuidemo/tables/data'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ]
+                    ],
+                ],
+                [
+                    'label' => 'Calendar',
+                    'url' => ['/adminuidemo/default/calendar'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-calendar',
+                    ],
+                    'badgeOptions' => [
+                        'type' => 'notification1',
+                        'text' => '3',
+                    ],
+                ],
+                [
+                    'label' => 'Mailbox',
+                    'url' => ['/adminuidemo/default/mailbox'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-envelope',
+                    ],
+                    'badgeOptions' => [
+                        'type' => 'notification2',
+                        'text' => '13',
+                    ],
+                ],
+                [
+                    'label' => 'Examples',
+                    #'url' => ['/site/chart'],
+                    'linkOptions'=>[
+                        'class' => 'fa fa-folder',
+                    ],
+                    'items' => [
+                        [
+                            'label' => 'Invoice',
+                            'url' => ['/adminuidemo/examples/invoice'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Login',
+                            'url' => ['/adminuidemo/examples/login'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Register',
+                            'url' => ['/adminuidemo/examples/register'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Lockscreen',
+                            'url' => ['/adminuidemo/examples/lockscreen'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => '404 Error',
+                            'url' => ['/adminuidemo/examples/error404'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => '500 Error',
+                            'url' => ['/adminuidemo/examples/error500'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ],
+                        [
+                            'label' => 'Blank Page',
+                            'url' => ['/adminuidemo/examples/empty'],
+                            'linkOptions'=>[
+                                'class' => 'fa fa-angle-double-right',
+                            ]
+                        ]
+                    ],
+                ],
             ];
-            if (Yii::$app->user->isGuest) {
-                $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
-            } else {
-                $menuItems[] = [
-                    'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                    'url' => ['/site/logout'],
-                    'linkOptions' => ['data-method' => 'post']
-                ];
-            }
-
+            /* TODO
+            if($this->params['urls']){
+                $menuitems = $this->params['urls'];
+            }*/
             echo Nav::widget([
-                'options' => ['class' => 'navbar-nav navbar-right'],
-                'items' => $menuItems,
+                'options' => ['class' => 'sidebar-menu'],
+                'items' => $menuitems,
             ]);
-            NavBar::end();
+            ?>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
 
-        ?>
+    <!-- =============================================== -->
 
-        <div class="container">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
-        <?= $content ?>
-        </div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                <?= ArrayHelper::getValue($this->params, 'pageTitle', Html::encode($this->title)); ?>
+                <small><?= ArrayHelper::getValue($this->params, 'subTitle', ''); ?></small>
+            </h1>
+
+            <?= Breadcrumbs::widget([
+                'links' => ArrayHelper::getValue($this->params, 'breadcrumbs', []),
+            ]) ?>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <?= $content ?>
+        </section>
+        <!-- /.content -->
     </div>
+    <!-- /.content-wrapper -->
 
-    <footer class="footer">
-        <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
-        </div>
+    <footer class="main-footer">
+        <?= ArrayHelper::getValue($this->blocks, 'footerLeft', '<strong>This page is approved for RevenueNSW internal release only.</strong>'); ?>
+        <?= ArrayHelper::getValue($this->blocks, 'footerRight', ''); ?>
     </footer>
-<?php //*/?>
-    <?php $this->endBody() ?>
+
+    <?= ArrayHelper::getValue($this->blocks, 'sidebar', ''); ?>
+</div>
+<!-- ./wrapper -->
+
+<?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>
-<?php } ?>
