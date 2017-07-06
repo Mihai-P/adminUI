@@ -21,7 +21,7 @@ $this->beginPage();
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title><?= Html::encode($this->title) ?></title>
+    <title><?= ArrayHelper::getValue($this->blocks, 'htmlTile', Html::encode($this->title)); ?></title>
     <?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
@@ -36,9 +36,9 @@ $this->beginPage();
         <?php else: ?>
         <a href="<?=Url::to(['/'])?>" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>LT</span>
+            <span class="logo-mini"><?= Yii::t('app', 'app_name_short')?></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Admin</b>LTE</span>
+            <span class="logo-lg"><?= Yii::t('app', 'app_name')?></span>
         </a>
         <?php endif; ?>
         <!-- Header Navbar: style can be found in header.less -->
@@ -117,7 +117,7 @@ $this->beginPage();
     <!-- /.content-wrapper -->
 
     <footer class="main-footer">
-        <?= ArrayHelper::getValue($this->blocks, 'footerLeft', '<strong>This page is approved for RevenueNSW internal release only.</strong>'); ?>
+        <?= ArrayHelper::getValue($this->blocks, 'footerLeft', '<strong>This page is approved for internal usage only.</strong>'); ?>
         <?= ArrayHelper::getValue($this->blocks, 'footerRight', ''); ?>
     </footer>
 

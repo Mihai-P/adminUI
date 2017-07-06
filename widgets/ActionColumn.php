@@ -5,12 +5,13 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\grid;
+namespace tez\theme\widgets;
 
 use Yii;
 use Closure;
 use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\grid\ActionColumn as YiiActionColumn;
 
 /**
  * ActionColumn is a column for the [[GridView]] widget that displays buttons for viewing and manipulating the items.
@@ -30,7 +31,7 @@ use yii\helpers\Url;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class ActionColumn extends Column
+class ActionColumn extends YiiActionColumn
 {
     /**
      * @var string the ID of the controller that should handle the actions specified here.

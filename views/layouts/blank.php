@@ -27,10 +27,18 @@ $this->beginPage()
 	<?= Html::csrfMetaTags() ?>
     <?php $this->head() ?>
 </head>
-<body class="bg-black">
-    <?php $this->beginBody();?>
+<?php $this->beginBody();?>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <div class="login-logo">
+        <a href="/"><?= Yii::t('app', 'app_name')?></a>
+    </div>
+    <div class="login-box-body">
     <?= $content ?>
-    <?php $this->endBody() ?>
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<?php $this->endBody() ?>
 </body>
 </html>
 <?php $this->endPage() ?>

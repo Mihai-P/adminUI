@@ -12,7 +12,7 @@ use Yii;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
 use yii\base\InvalidConfigException;
-use tez\theme\assetsBundle\AdminUiDatePickerAsset;
+use tez\theme\assetsBundle\AdminUiDatePickerRangeAsset;
 use yii\helpers\Html;
 
 /**
@@ -51,7 +51,7 @@ class Daterange extends InputWidget
      */
     public function registerAssets(){
         $view = $this->getView();
-        AdminUiDatePickerAsset::register($view);
+        AdminUiDatePickerRangeAsset::register($view);
 
         $options = ArrayHelper::merge([
             'timePicker' => false,
