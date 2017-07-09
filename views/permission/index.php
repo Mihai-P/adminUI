@@ -27,8 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="box box-primary">
         <div class="box-header">
-            <h3 class="box-title"><?= Yii::t('app', 'Company List')?></h3>
-            <?= Html::a(Yii::t('app', 'Create Company'), ['create'], ['class' => 'btn btn-primary btn-xs pull-right']) ?>
+            <h3 class="box-title"><?= Yii::t('usuario', 'Permissions')?></h3>
+            <?= Html::a(Yii::t('usuario', 'Create new permission'), ['create'], ['class' => 'btn btn-primary btn-xs pull-right']) ?>
         </div>
         <!-- /.box-header -->
         <div class="box-body no-padding">

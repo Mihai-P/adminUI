@@ -24,3 +24,15 @@ div.required label:after {
     content: " *";
     color: red;
 }
+
+.summary {
+    padding: 10px;
+}
+
+.pagination-holder {
+    padding-right: 10px;
+}
+
+.pagination {
+    margin: 0;
+}

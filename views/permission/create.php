@@ -19,11 +19,21 @@ $this->title = Yii::t('usuario', 'Create new permission');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
+<div class="contact-create">
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title"><?= Yii::t('app', 'Create new permission')?></h3>
+        </div>
+        <div class="box-body">
+            <?= $this->render(
+                '_form',
+                [
+                    'model' => $model,
+                    'unassignedItems' => $unassignedItems,
+                ]
+            ) ?>
 
-<?= $this->render(
-    '_form',
-    [
-        'model' => $model,
-        'unassignedItems' => $unassignedItems,
-    ]
-) ?>
+        </div>
+        <!-- /.box-body -->
+    </div>
+</div>

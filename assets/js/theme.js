@@ -22,4 +22,11 @@ $(document).ready(function(){
             $( 'ul.sidebar-menu' ).find( 'ul.treeview-menu' ).removeClass('menu-open').css("display","none");
         }
     });
-}) 
+
+    // Javascript to enable link to tab
+    var url = document.location.toString();
+    if (url.match('#')) {
+        $('.nav-tabs a[href="#' + url.split('#')[1] + '"]').tab('show');
+    }
+})
+

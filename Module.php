@@ -49,8 +49,8 @@ class Module extends \yii\base\Module
 //                ],
 //            ],
 //        ]);
-//        Yii::$app->set('assetManager', [
-//            'class' => 'yii\web\AssetManager',
+        Yii::$app->set('assetManager', [
+            'class' => 'yii\web\AssetManager',
 //            'bundles' => [
 //                'yii\widgets\ActiveFormAsset' => [
 //                    'js' => [],
@@ -64,17 +64,23 @@ class Module extends \yii\base\Module
 //                    ],
 //                ],
 //            ],
-//            'linkAssets' => false,
-//        ]);
+            'linkAssets' => false,
+        ]);
 
         Yii::$container->set('yii\grid\GridView', [
             'layout' => "\n{items}\n
                     <div class=\"table-footer clearfix\">\n
-                        {actions}\n
-                        <div class=\"pagination-holder\">\n
-                            {pager}\n
-                        </div>\n
-                        {summary}\n
+                        <!--{actions}\n-->
+                        <div class='row'>
+                            <div class='col-md-4 text-left'>
+                                {summary}\n
+                            </div>
+                            <div class='col-md-8 text-right'>
+                                <div class=\"pagination-holder\">\n
+                                    {pager}\n
+                                </div>\n
+                            </div>
+                        </div>
                     </div>",
             'tableOptions' => [
                 'class' => 'table table-hover table-striped'
@@ -90,12 +96,12 @@ class Module extends \yii\base\Module
                 ]
         );
         Yii::$container->set('yii\bootstrap\ActiveForm', [
-            'layout' => 'horizontal',
-                'fieldConfig' => [
-                    'horizontalCssClasses' => [
-                        'wrapper' => 'col-sm-9',
-                    ],
-                ],
+                'layout' => 'horizontal',
+//                'fieldConfig' => [
+//                    'horizontalCssClasses' => [
+//                        'wrapper' => 'col-sm-9',
+//                    ],
+//                ],
             ]
         );
           Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
