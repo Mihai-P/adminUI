@@ -20,9 +20,9 @@ use yii\web\View;
  * @var string $content
  */
 
-$this->title = Yii::t('usuario', 'Update user account');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('usuario', 'Users'), 'url' => ['index']];
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('app', 'Manage Users');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Manage Users'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = Yii::t('app', 'Update user');
 
 ?>
 <div class="clearfix"></div>
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ) ?>
 <div class="box box-success">
     <div class="box-header with-border">
-        <h3 class="box-title"><?= Html::encode($this->title) ?></h3>
+        <h3 class="box-title"><?= Yii::t('app', 'Update user') ?></h3>
     </div>
     <div class="box-body">
         <div class="row">
