@@ -114,40 +114,47 @@ class ActionColumn extends YiiActionColumn
     protected function initDefaultButtons()
     {
         if (!isset($this->buttons['view'])) {
-            $this->buttons['view'] = function ($url, $model, $key) {
-                $options = array_merge([
-                    'title' => Yii::t('yii', 'View'),
-                    'aria-label' => Yii::t('yii', 'View'),
-                    'class' => 'btn btn-xs btn-warning model-view',
-                    'data-pjax' => '0',
-                ], $this->buttonOptions);
-                return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
-            };
+            $this->buttons['view'] = function ($url, $model, $key) {return self::viewButton($url, $model, $key, $this->buttonOptions);};
         }
         if (!isset($this->buttons['update'])) {
-            $this->buttons['update'] = function ($url, $model, $key) {
-                $options = array_merge([
-                    'data-pjax' => '0',
-                    'title' => Yii::t('yii', 'Update'),
-                    'class' => 'btn btn-xs btn-default model-edit'
-                ], $this->buttonOptions);
-                return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
-            };
+            $this->buttons['update'] = function ($url, $model, $key) {return self::updateButton($url, $model, $key, $this->buttonOptions);};
         }
         if (!isset($this->buttons['delete'])) {
-            $this->buttons['delete'] = function ($url, $model, $key) {
-                $options = array_merge(
-                    [
-                    'title' => Yii::t('yii', 'Delete'),
-                    'aria-label' => Yii::t('yii', 'Delete'),
-                    'class' => 'btn btn-xs btn-danger model-delete',
-                    'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
-                    'data-method' => 'post',
-                    'data-pjax' => '0',
-                ], $this->buttonOptions);
-                return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
-            };
+            $this->buttons['delete'] = function ($url, $model, $key) {return self::deleteButton($url, $model, $key, $this->buttonOptions);};
         }
+
+    }
+
+    static function viewButton($url, $model, $key, $buttonOptions = []) {
+        $options = array_merge([
+            'title' => Yii::t('yii', 'View'),
+            'aria-label' => Yii::t('yii', 'View'),
+            'class' => 'btn btn-xs btn-warning model-view',
+            'data-pjax' => '0',
+        ], $buttonOptions);
+        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
+    }
+
+    static function updateButton($url, $model, $key, $buttonOptions = []) {
+        $options = array_merge([
+            'data-pjax' => '0',
+            'title' => Yii::t('yii', 'Update'),
+            'class' => 'btn btn-xs btn-default model-edit'
+        ], $buttonOptions);
+        return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
+    }
+
+    static function deleteButton($url, $model, $key, $buttonOptions = []) {
+        $options = array_merge(
+            [
+                'title' => Yii::t('yii', 'Delete'),
+                'aria-label' => Yii::t('yii', 'Delete'),
+                'class' => 'btn btn-xs btn-danger model-delete',
+                'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
+                'data-method' => 'post',
+                'data-pjax' => '0',
+            ], $buttonOptions);
+        return Html::a('<span class="glyphicon glyphicon-trash"></span>', $url, $options);
     }
 
     /**
