@@ -113,7 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'format' => 'raw',
             ],
             [
-                'class' => 'yii\grid\ActionColumn',
+                'class' => 'tez\theme\widgets\ActionColumn',
                 'template' => '{update} {delete}',
             ],
         ],

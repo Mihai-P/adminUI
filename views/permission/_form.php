@@ -11,7 +11,7 @@
 
 use dosamigos\selectize\SelectizeDropDownList;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
 
 /**
  * @var $this            yii\web\View
@@ -20,7 +20,6 @@ use yii\widgets\ActiveForm;
  */
 
 ?>
-
 <?php $form = ActiveForm::begin(
     [
         'enableClientValidation' => false,
@@ -28,21 +27,24 @@ use yii\widgets\ActiveForm;
     ]
 ) ?>
 
-<?= $form->field($model, 'name') ?>
+    <?= $form->field($model, 'name') ?>
 
-<?= $form->field($model, 'description') ?>
+    <?= $form->field($model, 'description') ?>
 
-<?= $form->field($model, 'children')->widget(
-    SelectizeDropDownList::class,
-    [
-        'items' => $unassignedItems,
-        'options' => [
-            'id' => 'children',
-            'multiple' => true,
-        ],
-    ]
-) ?>
+    <?= $form->field($model, 'children')->widget(
+        SelectizeDropDownList::class,
+        [
+            'items' => $unassignedItems,
+            'options' => [
+                'id' => 'children',
+                'multiple' => true,
+            ],
+        ]
+    ) ?>
 
-<?= Html::submitButton(Yii::t('usuario', 'Save'), ['class' => 'btn btn-success btn-block']) ?>
-
+    <div class="row">
+        <div class="col-xs-offset-3 col-xs-9">
+            <?= Html::submitButton(Yii::t('usuario', 'Save'), ['class' => 'btn btn-success btn-block']) ?>
+        </div>
+    </div>
 <?php ActiveForm::end() ?>

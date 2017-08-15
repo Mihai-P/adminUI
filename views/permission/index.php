@@ -14,7 +14,7 @@
  * @var $this yii\web\View
  * @var $searchModel \Da\User\Search\PermissionSearch
  */
-use yii\grid\ActionColumn;
+use tez\theme\widgets\ActionColumn;
 use yii\grid\GridView;
 use yii\helpers\Url;
 use yii\helpers\Html;
@@ -49,9 +49,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'urlCreator' => function ($action, $model) {
                     return Url::to(['/user/permission/' . $action, 'name' => $model['name']]);
                 },
-                'options' => [
-                    'style' => 'width: 5%',
-                ],
             ],
         ],
     ]

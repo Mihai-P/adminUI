@@ -33,6 +33,10 @@ use yii\grid\ActionColumn as YiiActionColumn;
  */
 class ActionColumn extends YiiActionColumn
 {
+    public $contentOptions = [
+        'style' => 'width: 5%; white-space: nowrap;',
+    ];
+
     /**
      * @var string the ID of the controller that should handle the actions specified here.
      * If not set, it will use the currently active controller. This property is mainly used by
@@ -114,7 +118,7 @@ class ActionColumn extends YiiActionColumn
                 $options = array_merge([
                     'title' => Yii::t('yii', 'View'),
                     'aria-label' => Yii::t('yii', 'View'),
-                    'class' => 'view btn-warning',
+                    'class' => 'btn btn-xs btn-warning model-view',
                     'data-pjax' => '0',
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', $url, $options);
@@ -123,20 +127,20 @@ class ActionColumn extends YiiActionColumn
         if (!isset($this->buttons['update'])) {
             $this->buttons['update'] = function ($url, $model, $key) {
                 $options = array_merge([
-                    'title' => Yii::t('yii', 'Update'),
-                    'aria-label' => Yii::t('yii', 'Update'),
-                    'class' => 'update btn-primary',
                     'data-pjax' => '0',
+                    'title' => Yii::t('yii', 'Update'),
+                    'class' => 'btn btn-xs btn-default model-edit'
                 ], $this->buttonOptions);
                 return Html::a('<span class="glyphicon glyphicon-pencil"></span>', $url, $options);
             };
         }
         if (!isset($this->buttons['delete'])) {
             $this->buttons['delete'] = function ($url, $model, $key) {
-                $options = array_merge([
+                $options = array_merge(
+                    [
                     'title' => Yii::t('yii', 'Delete'),
                     'aria-label' => Yii::t('yii', 'Delete'),
-                    'class' => 'delete alert-danger',
+                    'class' => 'btn btn-xs btn-danger model-delete',
                     'data-confirm' => Yii::t('yii', 'Are you sure you want to delete this item?'),
                     'data-method' => 'post',
                     'data-pjax' => '0',

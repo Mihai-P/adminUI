@@ -15,8 +15,9 @@
  * @var $unassignedItems          string[]
  */
 
-$this->title = Yii::t('usuario', 'Create new permission');
-$this->params['breadcrumbs'][] = $this->title;
+$this->title = Yii::t('app', 'Create Permission');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Manage Permissions'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = Yii::t('app', 'Create Permission');
 
 ?>
 <div class="contact-create">
