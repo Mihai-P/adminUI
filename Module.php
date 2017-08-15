@@ -69,23 +69,26 @@ class Module extends \yii\base\Module
 
         Yii::$container->set('yii\grid\GridView', [
             'layout' => "\n{items}\n
-                    <div class=\"table-footer clearfix\">\n
+                    <div class=\"table-footer clearfix row\">\n
                         <!--{actions}\n-->
-                        <div class='row'>
-                            <div class='col-md-4 text-left'>
+                            <div class='col-sm-4 text-left'>
                                 {summary}\n
                             </div>
-                            <div class='col-md-8 text-right'>
+                            <div class='col-sm-8 text-right'>
                                 <div class=\"pagination-holder\">\n
                                     {pager}\n
                                 </div>\n
                             </div>
-                        </div>
                     </div>",
             'tableOptions' => [
                 'class' => 'table table-hover table-striped'
             ]
                 ]
+        );
+        Yii::$container->set('yii\widgets\DetailView', [
+                'template' => '<tr><th class=\'col-md-3 text-right\'>{label}</th><td class=\'col-md-9 text-left\'>{value}</td></tr>',
+                'options' => ['class' => 'table table-striped detail-view']
+            ]
         );
         Yii::$container->set('yii\grid\ActionColumn', [
             'options' => ['style' => 'width: 140px;'], 'contentOptions' => ['class' => 'action-column'], 'headerOptions' => ['class' => 'action-column']
@@ -100,6 +103,7 @@ class Module extends \yii\base\Module
                 'fieldConfig' => [
                     'horizontalCssClasses' => [
                         'wrapper' => 'col-sm-9',
+                        'hint' => 'col-sm-9 col-sm-offset-3',
                     ],
                 ],
             ]
