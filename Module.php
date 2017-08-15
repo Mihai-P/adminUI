@@ -97,11 +97,11 @@ class Module extends \yii\base\Module
         );
         Yii::$container->set('yii\bootstrap\ActiveForm', [
                 'layout' => 'horizontal',
-//                'fieldConfig' => [
-//                    'horizontalCssClasses' => [
-//                        'wrapper' => 'col-sm-9',
-//                    ],
-//                ],
+                'fieldConfig' => [
+                    'horizontalCssClasses' => [
+                        'wrapper' => 'col-sm-9',
+                    ],
+                ],
             ]
         );
           Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
