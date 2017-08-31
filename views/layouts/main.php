@@ -5,6 +5,7 @@ use tez\theme\assetsBundle\AdminUiAsset;
 use yii\helpers\ArrayHelper;
 use tez\theme\widgets\Breadcrumbs;
 use yii\helpers\Url;
+use tez\theme\widgets\Alert;
 /**
  * @var \yii\web\View $this
  * @var string $content
@@ -80,9 +81,8 @@ $this->beginPage();
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
                 </div>
             </form>
             <?php endif; ?>
@@ -110,6 +110,16 @@ $this->beginPage();
 
         <!-- Main content -->
         <section class="content">
+            <?php foreach (Yii::$app->session->getAllFlashes() as $type => $message): ?>
+                <?php if (in_array($type, ['success', 'danger', 'warning', 'info'], true)): ?>
+                    <?= Alert::widget(
+                        [
+                            'options' => ['class' => 'alert-dismissible alert-' . $type],
+                            'body' => $message,
+                        ]
+                    ) ?>
+                <?php endif ?>
+            <?php endforeach ?>
             <?= $content ?>
         </section>
         <!-- /.content -->

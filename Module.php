@@ -109,7 +109,7 @@ class Module extends \yii\base\Module
             ]
         );
           Event::on(Controller::className(), Controller::EVENT_BEFORE_ACTION, function ($event) {
-            if(in_array($event->action->id,['login','forgot','reset-password'])){
+            if(in_array($event->action->id,['login','forgot','reset-password','request'])){
             $event->sender->layout = '//blank';
           }
           });
