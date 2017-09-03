@@ -22,27 +22,17 @@ $this->title = Yii::t('usuario', 'Recover your password');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?= $this->render('/shared/_alert', ['module' => Yii::$app->getModule('user')]) ?>
-<div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title"><?= Html::encode($this->title) ?></h3>
-            </div>
-            <div class="panel-body">
-                <?php $form = ActiveForm::begin(
-                    [
-                        'id' => $model->formName(),
-                        'enableAjaxValidation' => true,
-                        'enableClientValidation' => false,
-                    ]
-                ); ?>
+<p class="login-box-msg"><?= $this->title?></p>
+<?php $form = ActiveForm::begin(
+    [
+        'id' => $model->formName(),
+        'enableAjaxValidation' => true,
+        'enableClientValidation' => false,
+    ]
+); ?>
 
-                <?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
+<?= $form->field($model, 'email')->textInput(['autofocus' => true]) ?>
 
-                <?= Html::submitButton(Yii::t('usuario', 'Continue'), ['class' => 'btn btn-primary btn-block']) ?><br>
+<?= Html::submitButton(Yii::t('usuario', 'Continue'), ['class' => 'btn btn-primary btn-block']) ?><br>
 
-                <?php ActiveForm::end(); ?>
-            </div>
-        </div>
-    </div>
-</div>
+<?php ActiveForm::end(); ?>

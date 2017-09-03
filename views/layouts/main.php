@@ -6,7 +6,10 @@ use yii\helpers\ArrayHelper;
 use tez\theme\widgets\Breadcrumbs;
 use yii\helpers\Url;
 use tez\theme\widgets\Alert;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5a6e8a6e75b2c163771bc72da062af86ba7c5069
 /**
  * @var \yii\web\View $this
  * @var string $content
@@ -82,9 +85,8 @@ $this->beginPage();
                 <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search...">
                     <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
+                        <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                    </span>
                 </div>
             </form>
             <?php endif; ?>
@@ -122,7 +124,6 @@ $this->beginPage();
                     ) ?>
                 <?php endif ?>
             <?php endforeach ?>
-
             <?= $content ?>
         </section>
         <!-- /.content -->

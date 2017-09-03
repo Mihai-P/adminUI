@@ -69,6 +69,14 @@ $this->params['breadcrumbs'][] = $this->title;
 ) ?>
 
 <?php ActiveForm::end(); ?>
+<br />
+<?php if ($module->allowPasswordRecovery): ?>
+
+        <?= Html::a(
+            Yii::t('usuario', 'I forgot my password'),
+            ['/user/recovery/request']
+        ) ?>
+<?php endif ?>
 
 <?php if ($module->enableEmailConfirmation): ?>
     <p class="text-center">
