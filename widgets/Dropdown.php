@@ -57,10 +57,10 @@ class Dropdown extends Widget
     public function init()
     {
         parent::init();
-        if($this->type){
+        if ($this->type){
             $class = ($this->type == self::DROPDOWN) ? 'dropdown-menu' : 'treeview-menu';
             Html::addCssClass($this->options,$class);
-        }else{
+        } else {
             Html::addCssClass($this->options, 'dropdown-menu');
         }
     }
@@ -95,7 +95,7 @@ class Dropdown extends Widget
 
             $options = ArrayHelper::getValue($item, 'options', []);
 
-            if(isset($item['divider'])){
+            if (isset($item['divider'])){
                 Html::addCssClass($options, 'divider');
                 $lines[] = Html::tag('li','', $options);
                 continue;
