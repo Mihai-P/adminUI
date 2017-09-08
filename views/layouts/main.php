@@ -6,10 +6,6 @@ use yii\helpers\ArrayHelper;
 use tez\theme\widgets\Breadcrumbs;
 use yii\helpers\Url;
 use tez\theme\widgets\Alert;
-<<<<<<< HEAD
-
-=======
->>>>>>> 5a6e8a6e75b2c163771bc72da062af86ba7c5069
 /**
  * @var \yii\web\View $this
  * @var string $content
